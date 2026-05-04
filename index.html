@@ -398,7 +398,7 @@ function setSrc(s){tSrc=s;rT();}
 
 const cached=localStorage.getItem('kk_budget_data');
 if(cached){try{loadData(JSON.parse(cached));}catch(e){localStorage.removeItem('kk_budget_data');}}
-if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
+
 </script>
 </body>
 </html>
