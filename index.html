@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KK Budget">
+<meta name="theme-color" content="#0A0A0F">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>KK·BUDGET</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root{--bg:#0A0A0F;--bg2:#0F0F17;--bg3:#13131D;--bg4:#1A1A27;--line:#1E1E2E;--line2:#252535;--text:#E8E8F2;--text2:#6B6B8A;--text3:#3A3A55;--green:#00FF87;--gdim:#0D2A1A;--blue:#378ADD;--red:#FF4D6D;--rdim:#2A0D15;--amber:#FFB800;--mono:'SF Mono','Fira Code',monospace;--sans:-apple-system,BlinkMacSystemFont,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:var(--bg);font-family:var(--sans);color:var(--text)}
+body{display:flex;flex-direction:column;max-width:430px;margin:0 auto}
+
+/* IMPORT */
+#imp{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;z-index:1000}
+.i-logo{font-family:var(--mono);font-size:14px;color:var(--text3);letter-spacing:4px;margin-bottom:44px}
+.i-ring{width:120px;height:120px;margin-bottom:28px;position:relative}
+.i-ring svg{width:100%;height:100%}
+.i-kk{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--mono);font-size:22px;font-weight:700;color:var(--green);letter-spacing:2px}
+.i-title{font-size:22px;font-weight:600;margin-bottom:8px;text-align:center}
+.i-sub{font-size:14px;color:var(--text2);text-align:center;line-height:1.5;margin-bottom:36px}
+.i-btn{width:100%;padding:16px;border-radius:12px;background:var(--green);color:#000;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:1px;border:none;cursor:pointer;margin-bottom:10px}
+.i-btn:active{opacity:.8}
+.i-note{font-family:var(--mono);font-size:10px;color:var(--text3);text-align:center;margin-top:20px;letter-spacing:.5px;line-height:1.7}
+#finput{display:none}
+
+/* APP */
+.app{flex:1;display:none;flex-direction:column;height:100%}
+.nav{display:flex;background:var(--bg2);border-bottom:1px solid var(--line);flex-shrink:0}
+.nb{flex:1;padding:10px 2px 8px;font-size:9px;color:var(--text3);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;font-family:var(--mono);letter-spacing:.8px}
+.nb.on{color:var(--green);border-bottom-color:var(--green)}
+.ni{font-size:15px;line-height:1}
+.screens{flex:1;overflow:hidden;position:relative}
+.sc{position:absolute;inset:0;overflow-y:auto;display:none;-webkit-overflow-scrolling:touch}
+.sc.on{display:block}
+
+/* HDR */
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:13px 20px 8px;background:var(--bg2);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.hdr-logo{font-family:var(--mono);font-size:12px;color:var(--text3);letter-spacing:3px}
+.hdr-t{font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:2px}
+.hdr-a{display:flex;gap:8px;align-items:center}
+.hdr-rst{font-family:var(--mono);font-size:9px;color:var(--text3);padding:4px 8px;border:1px solid var(--line2);border-radius:6px;background:none;cursor:pointer;letter-spacing:.5px}
+.hdr-kk{width:28px;height:28px;border-radius:50%;background:var(--bg4);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text3)}
+
+/* MTABS */
+.mtabs{display:flex;border-bottom:1px solid var(--line);background:var(--bg2)}
+.mt{flex:1;padding:8px 2px;font-size:10px;font-family:var(--mono);color:var(--text3);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;letter-spacing:.5px;text-align:center}
+.mt.on{color:var(--green);border-bottom-color:var(--green)}
+
+/* RING */
+.ringsec{padding:18px;display:flex;flex-direction:column;align-items:center}
+.mnav{display:flex;align-items:center;gap:16px;margin-bottom:14px}
+.mnb{background:none;border:1px solid var(--line2);color:var(--text3);width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
+.mnb:active{background:var(--bg4)}
+.mnlbl{font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:2px;min-width:120px;text-align:center}
+.rwrap{position:relative;width:200px;height:200px;margin-bottom:6px}
+.rctr{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
+.ramt{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--text);letter-spacing:-1px;line-height:1}
+.rlbl{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:2px;margin-top:5px}
+.rbud{font-family:var(--mono);font-size:11px;color:var(--green);margin-top:4px}
+
+/* PACE */
+.pace{background:var(--gdim);border:1px solid #0D3A20;border-radius:10px;padding:10px 14px;margin:0 20px 4px;display:flex;align-items:center;gap:10px}
+.pdot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.ptxt{font-family:var(--mono);font-size:10px;color:#2A7A4A;flex:1;letter-spacing:.3px}
+.pbdg{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:4px;font-weight:500;letter-spacing:.5px}
+.pok{background:#0D3A20;color:var(--green)}.pwrn{background:#3A2A00;color:var(--amber)}.povr{background:var(--rdim);color:var(--red)}
+
+/* SUM ROWS */
+.srows{padding:4px 20px 10px}
+.srow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.srow:last-child{border-bottom:none}
+.sdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.slbl{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:1px;flex:1}
+.sbw{width:70px;height:2px;background:var(--line2);border-radius:1px;overflow:hidden}
+.sb{height:100%;border-radius:1px}
+.samt{font-family:var(--mono);font-size:12px;font-weight:500;min-width:72px;text-align:right}
+
+/* GENERIC */
+.sec{padding:13px 20px 4px}
+.sect{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:2px;margin-bottom:7px}
+.cc{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:13px;margin:0 20px 13px;height:182px;position:relative}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:0 20px 13px}
+.mets{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 20px 4px}
+.met{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+.ml{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1.5px;margin-bottom:4px}
+.mv{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--text);letter-spacing:-.5px}
+.mv.pos{color:var(--green)}.mv.neg{color:var(--red)}
+.ms{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:2px}
+
+/* ROWS */
+.crow{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.crow:last-child{border-bottom:none}
+.cdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.cn{font-size:13px;color:var(--text);flex:1}
+.cbw{width:55px;height:3px;background:var(--bg4);border-radius:2px;overflow:hidden}
+.cb{height:100%;border-radius:2px}
+.ca{font-family:var(--mono);font-size:12px;color:var(--text);min-width:54px;text-align:right;font-weight:500}
+
+.trow{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.trow:last-child{border-bottom:none}
+.tdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.ti{flex:1;min-width:0}
+.tn{font-size:13px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tc{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:2px}
+.tr{text-align:right}
+.ta{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--text)}
+.td{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:2px}
+.sc2{font-size:9px;padding:1px 5px;border-radius:3px;background:#0D2A10;color:#00C865;font-family:var(--mono)}
+.ss{font-size:9px;padding:1px 5px;border-radius:3px;background:#0D1A2E;color:#378ADD;font-family:var(--mono)}
+
+.brow{padding:11px 14px;border-bottom:1px solid var(--line)}
+.brow:last-child{border-bottom:none}
+.bhdr{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.bn{font-size:13px;color:var(--text);flex:1}
+.bp{font-family:var(--mono);font-size:11px;font-weight:500}
+.bt{height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;margin-bottom:4px}
+.bf{height:100%;border-radius:2px;transition:width .5s}
+.bnum{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--text3)}
+.bo{color:var(--red)}
+
+.subr{display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:1px solid var(--line)}
+.subr:last-child{border-bottom:none}
+.sico{width:32px;height:32px;border-radius:8px;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.sinfo{flex:1}
+.sn{font-size:13px;color:var(--text)}
+.sf{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:1px}
+.sa{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--text)}
+
+.irow{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line)}
+.irow:last-child{border-bottom:none}
+.ibdg{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:4px;background:var(--gdim);color:var(--green);flex-shrink:0}
+.iname{font-size:13px;color:var(--text);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.iamt{font-family:var(--mono);font-size:13px;color:var(--green);font-weight:500}
+
+.cmpr{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.cmpr:last-child{border-bottom:none}
+.cmn{font-size:13px;color:var(--text);flex:1}
+.cmv{font-family:var(--mono);font-size:11px;min-width:52px;text-align:right;color:var(--text2)}
+.cmv.cur{color:var(--text);font-weight:500}
+.cmbdg{font-family:var(--mono);font-size:9px;padding:2px 6px;border-radius:4px}
+.cup{background:var(--rdim);color:var(--red)}.cdn{background:var(--gdim);color:var(--green)}
+
+.filt{display:flex;gap:6px;padding:8px 20px 4px;overflow-x:auto;scrollbar-width:none}
+.filt::-webkit-scrollbar{display:none}
+.fb{padding:5px 12px;border-radius:6px;font-size:10px;font-family:var(--mono);border:1px solid var(--line2);background:none;color:var(--text3);cursor:pointer;white-space:nowrap;letter-spacing:.5px}
+.fb.on{background:var(--gdim);border-color:#0D3A20;color:var(--green)}
+.empty{text-align:center;padding:32px;color:var(--text3);font-family:var(--mono);font-size:11px;letter-spacing:1px}
+.pb{padding-bottom:24px}
+</style>
+</head>
+<body>
+
+<div id="imp">
+  <div class="i-logo">KK·BUDGET</div>
+  <div class="i-ring">
+    <svg viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="50" fill="none" stroke="#1A1A27" stroke-width="8"/>
+      <circle cx="60" cy="60" r="50" fill="none" stroke="#00FF87" stroke-width="8"
+        stroke-dasharray="314" stroke-dashoffset="80" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+    </svg>
+    <div class="i-kk">KK</div>
+  </div>
+  <div class="i-title">Laipni lūgts</div>
+  <div class="i-sub">Ielādē savu finanšu datu failu lai sāktu.<br>Dati paliek tikai uz tava ierīcē.</div>
+  <input type="file" id="finput" accept=".json">
+  <button class="i-btn" onclick="document.getElementById('finput').click()">↑ IMPORTĒT JSON DATUS</button>
+  <div class="i-note">DATI NETIEK SŪTĪTI UZ SERVERI<br>VISS NOTIEK LOKĀLI TAVĀ IERĪCĒ</div>
+</div>
+
+<div class="app" id="app">
+<nav class="nav">
+  <button class="nb on" onclick="go('dash')" id="nb-dash"><span class="ni">◎</span>DASH</button>
+  <button class="nb" onclick="go('card')" id="nb-card"><span class="ni">▤</span>KARTE</button>
+  <button class="nb" onclick="go('fixed')" id="nb-fixed"><span class="ni">▦</span>FIKSĒTIE</button>
+  <button class="nb" onclick="go('budget')" id="nb-budget"><span class="ni">◈</span>BUDŽETS</button>
+  <button class="nb" onclick="go('txs')" id="nb-txs"><span class="ni">≡</span>VISI</button>
+</nav>
+<div class="screens">
+
+<div id="sc-dash" class="sc on">
+  <div class="hdr"><div class="hdr-logo">KK·BUDGET</div><div class="hdr-a"><button class="hdr-rst" onclick="resetData()">⟳ DATI</button><div class="hdr-kk">KK</div></div></div>
+  <div class="ringsec">
+    <div class="mnav">
+      <button class="mnb" onclick="prevM()">‹</button>
+      <div class="mnlbl" id="mlbl">—</div>
+      <button class="mnb" onclick="nextM()">›</button>
+    </div>
+    <div class="rwrap"><canvas id="rc" width="200" height="200"></canvas>
+      <div class="rctr"><div class="ramt" id="ramt">€0</div><div class="rlbl">IZTĒRĒTS</div><div class="rbud" id="rbud">no €0</div></div>
+    </div>
+  </div>
+  <div class="pace"><div class="pdot"></div><div class="ptxt" id="ptxt">—</div><div class="pbdg pok" id="pbdg">—</div></div>
+  <div class="srows">
+    <div class="srow"><div class="sdot" style="background:var(--green)"></div><div class="slbl">IENĀKUMI</div><div class="sbw"></div><div class="samt" id="sinc" style="color:var(--green)">—</div></div>
+    <div class="srow"><div class="sdot" style="background:var(--blue)"></div><div class="slbl">KARTE</div><div class="sbw"><div class="sb" id="scb" style="background:var(--blue)"></div></div><div class="samt" id="scard">—</div></div>
+    <div class="srow"><div class="sdot" style="background:#2A3A5A"></div><div class="slbl">FIKSĒTIE</div><div class="sbw"><div class="sb" id="sfb" style="background:#2A3A5A"></div></div><div class="samt" id="sfix">—</div></div>
+    <div class="srow"><div class="sdot" id="sfd" style="background:var(--green)"></div><div class="slbl">BRĪVAIS</div><div class="sbw"></div><div class="samt" id="sfree">—</div></div>
+  </div>
+  <div class="sec"><div class="sect">4 MĒNEŠI · IZDEVUMI</div></div>
+  <div class="cc"><canvas id="dc"></canvas></div>
+  <div class="sec"><div class="sect">IENĀKUMI</div></div>
+  <div class="card" id="dinc"></div>
+  <div class="pb"></div>
+</div>
+
+<div id="sc-card" class="sc">
+  <div class="hdr"><div class="hdr-t">CITADELE · KARTE</div><div class="hdr-kk">KK</div></div>
+  <div class="mtabs" id="ctabs"></div>
+  <div class="mets" id="cmets"></div>
+  <div class="sec"><div class="sect">KATEGORIJAS</div></div>
+  <div class="cc" style="height:172px"><canvas id="cpie"></canvas></div>
+  <div class="card" id="ccats"></div>
+  <div class="pb"></div>
+</div>
+
+<div id="sc-fixed" class="sc">
+  <div class="hdr"><div class="hdr-t">SWEDBANK · FIKSĒTIE</div><div class="hdr-kk">KK</div></div>
+  <div class="mtabs" id="ftabs"></div>
+  <div class="mets" id="fmets"></div>
+  <div class="sec"><div class="sect">KATEGORIJAS</div></div>
+  <div class="card" id="fcats"></div>
+  <div class="sec"><div class="sect">DARĪJUMI</div></div>
+  <div class="card" id="ftxs"></div>
+  <div class="pb"></div>
+</div>
+
+<div id="sc-budget" class="sc">
+  <div class="hdr"><div class="hdr-t">BUDŽETS · LIMITI</div><div class="hdr-kk">KK</div></div>
+  <div class="mtabs" id="btabs"></div>
+  <div class="sec"><div class="sect">PROGRESS</div></div>
+  <div class="card" id="blist"></div>
+  <div class="sec"><div class="sect">ABONEMENTI</div></div>
+  <div class="card" id="slist"></div>
+  <div class="sec"><div class="sect">MĒNESIS PRET MĒNESI</div></div>
+  <div class="card" id="cmplist"></div>
+  <div class="pb"></div>
+</div>
+
+<div id="sc-txs" class="sc">
+  <div class="hdr"><div class="hdr-t">VISI DARĪJUMI</div><div class="hdr-kk">KK</div></div>
+  <div class="mtabs" id="ttabs"></div>
+  <div class="filt" id="tfilt"></div>
+  <div class="card" id="tlist"></div>
+  <div class="pb"></div>
+</div>
+
+</div>
+</div>
+
+<script>
+const CLR={'Pārtika':'#34C759','Kafejnīcas':'#FF9F0A','Aptieka':'#FF2D55','Veterinārais':'#AF52DE','Mājai':'#378ADD','Dārzs':'#30D158','Auto':'#636366','Degviela':'#FF6B35','Transports':'#32ADE6','Auto serviss':'#8E6E50','Apģērbs':'#FF375F','Tehnoloģijas':'#5E5CE6','AI abonements':'#BF5AF2','Amazon':'#FF9500','Piegāde':'#00C7BE','Veselība':'#FF3B30','Cits':'#3A3A5A','Elektroenerģija':'#FFD60A','Mobilie':'#64D2FF','Apdrošināšana':'#8E8E93','Komunālie':'#5E5CE6','Nodokļi':'#FF453A','Apsardze':'#A2845E','Ģimene':'#FF6B96','Mežs/Zeme':'#32D74B','Bankomāts':'#3A3A5A','Bankas komisija':'#2A2A3A'};
+const BUD={'Pārtika':700,'Aptieka':200,'Veterinārais':200,'Mājai':150,'AI abonements':30,'Tehnoloģijas':50,'Apģērbs':80,'Dārzs':50,'Auto':100,'Degviela':50,'Kafejnīcas':30,'Elektroenerģija':180,'Mobilie':175,'Apdrošināšana':135,'Komunālie':30,'Apsardze':20};
+const SUBS=[{name:'ChatGPT Plus',cat:'AI abonements',amt:23,freq:'ikmēneša',icon:'🤖'},{name:'LMT / Mobilie',cat:'Mobilie',amt:172.33,freq:'ikmēneša',icon:'📱'},{name:'Balcia apdrošināšana',cat:'Apdrošināšana',amt:130.48,freq:'ikmēneša',icon:'🛡'},{name:'Apple abonements',cat:'Tehnoloģijas',amt:2.99,freq:'ikmēneša',icon:'🍎'},{name:'Anthropic API',cat:'AI abonements',amt:5.38,freq:'ikmēneša',icon:'🔮'},{name:'Mega Sargs',cat:'Apsardze',amt:18.15,freq:'ikmēneša',icon:'🔐'}];
+const MLV={'2026-01':'JANVĀRIS','2026-02':'FEBRUĀRIS','2026-03':'MARTS','2026-04':'APRĪLIS','2026-05':'MAIJS','2026-06':'JŪNIJS','2026-07':'JŪLIJS','2026-08':'AUGUSTS','2026-09':'SEPTEMBRIS','2026-10':'OKTOBRIS','2026-11':'NOVEMBRIS','2026-12':'DECEMBRIS'};
+const MS3={'2026-01':'JAN','2026-02':'FEB','2026-03':'MAR','2026-04':'APR','2026-05':'MAI','2026-06':'JŪN','2026-07':'JŪL','2026-08':'AUG','2026-09':'SEP','2026-10':'OKT','2026-11':'NOV','2026-12':'DEC'};
+
+let D=null,MONTHS=[],MON={},curM='',cM='',fM='',bM='',tM='',tSrc='all';
+const CH={};
+const f0=v=>'€'+Math.abs(v).toFixed(0);
+const f2=v=>'€'+Math.abs(v).toFixed(2);
+const mi=m=>MONTHS.indexOf(m);
+const gl=m=>(MLV[m]||m)+' '+(m.split('-')[0]);
+const g3=m=>MS3[m]||m.slice(5);
+function kc(id){if(CH[id]){CH[id].destroy();delete CH[id];}}
+function ct(txs,month,skip=[]){const map={};txs.filter(t=>(month==='all'||t.month===month)&&!skip.includes(t.cat)).forEach(t=>{map[t.cat]=(map[t.cat]||0)+t.amt;});return Object.entries(map).sort((a,b)=>b[1]-a[1]);}
+
+document.getElementById('finput').addEventListener('change',e=>{
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{try{loadData(JSON.parse(ev.target.result));}catch{alert('Kļūda lasot failu.');}};
+  r.readAsText(f);
+});
+
+function loadData(json){
+  D=json;
+  const am=new Set([...(D.citadele||[]).map(t=>t.month),...(D.swedbank||[]).map(t=>t.month)]);
+  MONTHS=[...am].sort();
+  MON=D.monthly||{};
+  curM=cM=fM=bM=tM=MONTHS[MONTHS.length-1];
+  localStorage.setItem('kk_budget_data',JSON.stringify(D));
+  document.getElementById('imp').style.display='none';
+  document.getElementById('app').style.display='flex';
+  go('dash');
+}
+
+function resetData(){if(confirm('Dzēst datus un atgriezties importa ekrānā?')){localStorage.removeItem('kk_budget_data');location.reload();}}
+
+function go(id){
+  document.querySelectorAll('.sc,.nb').forEach(e=>e.classList.remove('on'));
+  document.getElementById('sc-'+id).classList.add('on');
+  document.getElementById('nb-'+id).classList.add('on');
+  ({dash:rD,card:rC,fixed:rF,budget:rB,txs:rT})[id]();
+}
+
+function tabs(el,cur,cb,noAll){
+  const e=document.getElementById(el);e.innerHTML='';
+  if(!noAll){const b=document.createElement('button');b.className='mt'+(cur==='all'?' on':'');b.textContent='VISI';b.onclick=()=>cb('all');e.appendChild(b);}
+  MONTHS.forEach(m=>{const b=document.createElement('button');b.className='mt'+(cur===m?' on':'');b.textContent=g3(m);b.onclick=()=>cb(m);e.appendChild(b);});
+}
+
+let ri=null;
+function drawRing(spent,budget,color){
+  const ctx=document.getElementById('rc').getContext('2d');
+  if(ri){ri.destroy();ri=null;}
+  const p=Math.min(1,spent/budget);
+  ri=new Chart(ctx,{type:'doughnut',data:{datasets:[{data:[p,Math.max(0,1-p)],backgroundColor:[color,'#1A1A27'],borderWidth:0,borderRadius:4}]},options:{responsive:false,cutout:'72%',plugins:{legend:{display:false},tooltip:{enabled:false}},animation:{duration:600}}});
+}
+
+function prevM(){const i=mi(curM);if(i>0){curM=MONTHS[i-1];rD();}}
+function nextM(){const i=mi(curM);if(i<MONTHS.length-1){curM=MONTHS[i+1];rD();}}
+
+function rD(){
+  if(!D)return;
+  document.getElementById('mlbl').textContent=gl(curM);
+  const d=MON[curM]||{card:0,fixed:0,income:0,free:0};
+  const te=d.card+d.fixed,bud=3000;
+  const rc=te>bud?'#FF4D6D':te>bud*.85?'#FFB800':'#00FF87';
+  drawRing(te,bud,rc);
+  const ra=document.getElementById('ramt');ra.textContent=f0(te);ra.style.color=rc;
+  document.getElementById('rbud').textContent='no €'+bud.toLocaleString();
+  const dim=new Date(parseInt(curM),parseInt(curM.split('-')[1]),0).getDate();
+  const ppd=d.card/dim,proj=ppd*dim;
+  document.getElementById('ptxt').textContent=`€${ppd.toFixed(0)}/dienā · ${dim} dienas · prognoze €${proj.toFixed(0)}`;
+  const pbdg=document.getElementById('pbdg');
+  if(proj<bud){pbdg.textContent='ON TRACK';pbdg.className='pbdg pok';}
+  else if(proj<bud*1.2){pbdg.textContent='TUVU';pbdg.className='pbdg pwrn';}
+  else{pbdg.textContent='PĀRTĒRIŅŠ';pbdg.className='pbdg povr';}
+  document.getElementById('sinc').textContent='+'+f0(d.income);
+  document.getElementById('scard').textContent=f0(d.card);
+  document.getElementById('sfix').textContent=f0(d.fixed);
+  const fr=d.free||(d.income-d.card-d.fixed);
+  const fe=document.getElementById('sfree');fe.textContent=(fr>=0?'+':'')+f0(fr);fe.style.color=fr>=0?'var(--green)':'var(--red)';
+  document.getElementById('sfd').style.background=fr>=0?'var(--green)':'var(--red)';
+  const mx=Math.max(d.card,d.fixed,1);
+  document.getElementById('scb').style.width=Math.round(d.card/mx*100)+'%';
+  document.getElementById('sfb').style.width=Math.round(d.fixed/mx*100)+'%';
+  kc('dc');
+  CH['dc']=new Chart(document.getElementById('dc'),{type:'bar',data:{labels:MONTHS.map(g3),datasets:[{label:'Karte',data:MONTHS.map(m=>+(MON[m]?.card||0).toFixed(0)),backgroundColor:'#378ADD',borderRadius:4,stack:'a'},{label:'Fiksētie',data:MONTHS.map(m=>+(MON[m]?.fixed||0).toFixed(0)),backgroundColor:'#1A2A3A',borderRadius:4,stack:'a'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: €${c.parsed.y.toFixed(0)}`}}},scales:{x:{stacked:true,grid:{display:false},ticks:{color:'#6B6B8A',font:{family:'monospace',size:11}}},y:{stacked:true,grid:{color:'#1A1A27'},ticks:{color:'#6B6B8A',callback:v=>'€'+v,font:{size:10}}}}}});
+  const incs=(D.incomes||[]).filter(t=>t.month===curM&&t.amt>0);
+  document.getElementById('dinc').innerHTML=incs.length?incs.map(t=>`<div class="irow"><span class="ibdg">${t.type.toUpperCase()}</span><span class="iname">${t.name}</span><span class="iamt">+${f0(t.amt)}</span></div>`).join(''):'<div class="empty">NAV IENĀKUMU</div>';
+}
+
+function rC(){
+  if(!D)return;
+  tabs('ctabs',cM,m=>{cM=m;rC();},true);
+  const txs=(D.citadele||[]).filter(t=>t.month===cM&&t.cat!=='Bankas komisija');
+  const tot=txs.reduce((s,t)=>s+t.amt,0),cnt=txs.length,mx=txs.reduce((m,t)=>Math.max(m,t.amt),0);
+  document.getElementById('cmets').innerHTML=`<div class="met"><div class="ml">KOPĀ</div><div class="mv neg">${f0(tot)}</div><div class="ms">${cnt} darījumi</div></div><div class="met"><div class="ml">VIDĒJI</div><div class="mv">€${cnt?(tot/cnt).toFixed(2):'0'}</div></div><div class="met"><div class="ml">LIELĀKAIS</div><div class="mv">€${mx.toFixed(0)}</div></div><div class="met"><div class="ml">DIENĀ</div><div class="mv">€${(tot/30).toFixed(0)}</div></div>`;
+  const cats=ct(D.citadele||[],cM,['Bankas komisija']),maxA=cats[0]?cats[0][1]:1;
+  kc('cpie');
+  if(cats.length){const t8=cats.slice(0,8);CH['cpie']=new Chart(document.getElementById('cpie'),{type:'doughnut',data:{labels:t8.map(c=>c[0]),datasets:[{data:t8.map(c=>+c[1].toFixed(2)),backgroundColor:t8.map(c=>CLR[c[0]]||'#3A3A5A'),borderWidth:2,borderColor:'#0A0A0F'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.label}: €${c.parsed.toFixed(0)}`}}}}});}
+  document.getElementById('ccats').innerHTML=cats.map(([cat,amt])=>`<div class="crow"><div class="cdot" style="background:${CLR[cat]||'#3A3A5A'}"></div><div class="cn">${cat}</div><div class="cbw"><div class="cb" style="width:${Math.round(amt/maxA*100)}%;background:${CLR[cat]||'#3A3A5A'}"></div></div><div class="ca">${f0(amt)}</div></div>`).join('');
+}
+
+function rF(){
+  if(!D)return;
+  tabs('ftabs',fM,m=>{fM=m;rF();},true);
+  const txs=(D.swedbank||[]).filter(t=>t.month===fM&&!['Bankas komisija','Bankomāts'].includes(t.cat));
+  const tot=txs.reduce((s,t)=>s+t.amt,0);
+  document.getElementById('fmets').innerHTML=`<div class="met"><div class="ml">KOPĀ</div><div class="mv neg">${f0(tot)}</div><div class="ms">${txs.length} rēķini</div></div><div class="met"><div class="ml">VIDĒJI/MĒN.</div><div class="mv">${f0(tot)}</div></div>`;
+  const cats=ct((D.swedbank||[]).filter(t=>!['Bankas komisija','Bankomāts'].includes(t.cat)),fM),maxA=cats[0]?cats[0][1]:1;
+  document.getElementById('fcats').innerHTML=cats.map(([cat,amt])=>`<div class="crow"><div class="cdot" style="background:${CLR[cat]||'#3A3A5A'}"></div><div class="cn">${cat}</div><div class="cbw"><div class="cb" style="width:${Math.round(amt/maxA*100)}%;background:${CLR[cat]||'#3A3A5A'}"></div></div><div class="ca">${f0(amt)}</div></div>`).join('');
+  document.getElementById('ftxs').innerHTML=[...txs].sort((a,b)=>b.date.localeCompare(a.date)).map(t=>`<div class="trow"><div class="tdot" style="background:${CLR[t.cat]||'#3A3A5A'}"></div><div class="ti"><div class="tn">${t.name}</div><div class="tc">${t.cat}</div></div><div class="tr"><div class="ta">-${f2(t.amt)}</div><div class="td">${t.date.slice(5)}</div></div></div>`).join('');
+}
+
+function rB(){
+  if(!D)return;
+  tabs('btabs',bM,m=>{bM=m;rB();},true);
+  const map={};
+  [...(D.citadele||[]),...(D.swedbank||[])].filter(t=>t.month===bM&&t.cat!=='Bankas komisija').forEach(t=>{map[t.cat]=(map[t.cat]||0)+t.amt;});
+  document.getElementById('blist').innerHTML=Object.entries(BUD).map(([cat,lim])=>{const sp=map[cat]||0,pct=Math.min(100,Math.round(sp/lim*100)),ov=sp>lim,col=ov?'#FF4D6D':pct>80?'#FFB800':'#00FF87';return`<div class="brow"><div class="bhdr"><div class="cdot" style="background:${CLR[cat]||'#3A3A5A'}"></div><div class="bn">${cat}</div><div class="bp" style="color:${col}">${pct}%</div></div><div class="bt"><div class="bf" style="width:${pct}%;background:${col}"></div></div><div class="bnum"><span>${f0(sp)} / ${f0(lim)}</span><span class="${ov?'bo':''}">${ov?'▲ ':''}€${Math.abs(sp-lim).toFixed(0)} ${ov?'pāri':'atlicis'}</span></div></div>`;}).sort((a,b)=>{const pa=parseInt(a.match(/(\d+)%/)[1]),pb=parseInt(b.match(/(\d+)%/)[1]);return pb-pa;}).join('');
+  const st=SUBS.reduce((s,x)=>s+x.amt,0);
+  document.getElementById('slist').innerHTML=`<div class="brow" style="padding:8px 14px"><div style="display:flex;justify-content:space-between"><div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px">KOPĀ MĒNESĪ</div><div style="font-family:var(--mono);font-size:13px;color:var(--red)">-€${st.toFixed(2)}</div></div></div>${SUBS.map(s=>`<div class="subr"><div class="sico">${s.icon}</div><div class="sinfo"><div class="sn">${s.name}</div><div class="sf">${s.freq.toUpperCase()}</div></div><div class="sa">-€${s.amt.toFixed(2)}</div></div>`).join('')}`;
+  const pi=mi(bM)-1;
+  if(pi>=0){const prev=MONTHS[pi],pm={};[...(D.citadele||[]),...(D.swedbank||[])].filter(t=>t.month===prev&&t.cat!=='Bankas komisija').forEach(t=>{pm[t.cat]=(pm[t.cat]||0)+t.amt;});const tc=Object.keys(map).sort((a,b)=>(map[b]||0)-(map[a]||0)).slice(0,8);document.getElementById('cmplist').innerHTML=tc.map(cat=>{const cur=map[cat]||0,pv=pm[cat]||0,diff=cur-pv,pct=pv?Math.round(diff/pv*100):0,badge=diff!==0?`<span class="cmbdg ${diff>0?'cup':'cdn'}">${diff>0?'+':''}${pct}%</span>`:'';return`<div class="cmpr"><div class="cdot" style="background:${CLR[cat]||'#3A3A5A'}"></div><div class="cmn">${cat}</div><div class="cmv">${pv?f0(pv):'-'}</div><div class="cmv cur">${f0(cur)}</div>${badge}</div>`;}).join('');}
+  else document.getElementById('cmplist').innerHTML='<div class="empty">NAV IEPRIEKŠĒJA MĒNEŠA</div>';
+}
+
+function rT(){
+  if(!D)return;
+  tabs('ttabs',tM,m=>{tM=m;rT();},true);
+  document.getElementById('tfilt').innerHTML=['all','C','S'].map(s=>`<button class="fb${tSrc===s?' on':''}" onclick="setSrc('${s}')">${s==='all'?'OBI':s==='C'?'CITADELE':'SWEDBANK'}</button>`).join('');
+  let all=[...(D.citadele||[]),...(D.swedbank||[])].filter(t=>t.cat!=='Bankas komisija');
+  if(tM!=='all')all=all.filter(t=>t.month===tM);
+  if(tSrc!=='all')all=all.filter(t=>t.s===tSrc);
+  all.sort((a,b)=>b.date.localeCompare(a.date));
+  document.getElementById('tlist').innerHTML=all.length?all.map(t=>`<div class="trow"><div class="tdot" style="background:${CLR[t.cat]||'#3A3A5A'}"></div><div class="ti"><div class="tn">${t.name}</div><div class="tc">${t.cat} · <span class="${t.s==='C'?'sc2':'ss'}">${t.s==='C'?'CIT':'SWD'}</span></div></div><div class="tr"><div class="ta">-${f2(t.amt)}</div><div class="td">${t.date.slice(5)}</div></div></div>`).join(''):'<div class="empty">NAV DARĪJUMU</div>';
+}
+function setSrc(s){tSrc=s;rT();}
+
+const cached=localStorage.getItem('kk_budget_data');
+if(cached){try{loadData(JSON.parse(cached));}catch(e){localStorage.removeItem('kk_budget_data');}}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
+</script>
+</body>
+</html>
