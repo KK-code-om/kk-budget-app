@@ -17,65 +17,65 @@
 html,body{height:100%;overflow:hidden;background:var(--bg);font-family:var(--sans);color:var(--text)}
 body{display:flex;flex-direction:column;max-width:430px;margin:0 auto}
 
-/* IMPORT */
+/* IMPORT SCREEN */
 #imp{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;z-index:1000}
-.i-logo{font-family:var(--mono);font-size:14px;color:var(--text3);letter-spacing:4px;margin-bottom:44px}
-.i-ring{width:120px;height:120px;margin-bottom:28px;position:relative}
+.i-logo{font-family:var(--mono);font-size:14px;color:var(--text3);letter-spacing:4px;margin-bottom:36px}
+.i-ring{width:110px;height:110px;margin-bottom:24px;position:relative}
 .i-ring svg{width:100%;height:100%}
-.i-kk{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--mono);font-size:22px;font-weight:700;color:var(--green);letter-spacing:2px}
+.i-kk{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--mono);font-size:26px;font-weight:700;color:var(--green);letter-spacing:2px}
 .i-title{font-size:22px;font-weight:600;margin-bottom:8px;text-align:center}
-.i-sub{font-size:14px;color:var(--text2);text-align:center;line-height:1.5;margin-bottom:36px}
-.i-btn{width:100%;padding:16px;border-radius:12px;background:var(--green);color:#000;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:1px;border:none;cursor:pointer;margin-bottom:10px}
-.i-btn:active{opacity:.8}
-.i-note{font-family:var(--mono);font-size:10px;color:var(--text3);text-align:center;margin-top:20px;letter-spacing:.5px;line-height:1.7}
-#finput{display:none}
+.i-sub{font-size:13px;color:var(--text2);text-align:center;line-height:1.6;margin-bottom:32px}
+.i-btn{width:100%;padding:15px;border-radius:12px;background:var(--green);color:#000;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:1px;border:none;cursor:pointer;margin-bottom:8px}
+.i-btn2{width:100%;padding:13px;border-radius:12px;background:var(--bg4);color:var(--text2);font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:1px;border:1px solid var(--line2);cursor:pointer}
+.i-note{font-family:var(--mono);font-size:9px;color:var(--text3);text-align:center;margin-top:20px;letter-spacing:.5px;line-height:1.8}
+#finput,#finput2{display:none}
 
 /* APP */
 .app{flex:1;display:none;flex-direction:column;height:100%}
 .nav{display:flex;background:var(--bg2);border-bottom:1px solid var(--line);flex-shrink:0}
-.nb{flex:1;padding:10px 2px 8px;font-size:9px;color:var(--text3);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;font-family:var(--mono);letter-spacing:.8px}
+.nb{flex:1;padding:9px 1px 7px;font-size:8px;color:var(--text3);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;font-family:var(--mono);letter-spacing:.5px}
 .nb.on{color:var(--green);border-bottom-color:var(--green)}
-.ni{font-size:15px;line-height:1}
+.ni{font-size:14px;line-height:1}
 .screens{flex:1;overflow:hidden;position:relative}
 .sc{position:absolute;inset:0;overflow-y:auto;display:none;-webkit-overflow-scrolling:touch}
 .sc.on{display:block}
 
-/* HDR */
-.hdr{display:flex;align-items:center;justify-content:space-between;padding:13px 20px 8px;background:var(--bg2);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 20px 8px;background:var(--bg2);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
 .hdr-logo{font-family:var(--mono);font-size:12px;color:var(--text3);letter-spacing:3px}
 .hdr-t{font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:2px}
-.hdr-a{display:flex;gap:8px;align-items:center}
-.hdr-rst{font-family:var(--mono);font-size:9px;color:var(--text3);padding:4px 8px;border:1px solid var(--line2);border-radius:6px;background:none;cursor:pointer;letter-spacing:.5px}
 .hdr-kk{width:28px;height:28px;border-radius:50%;background:var(--bg4);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text3)}
 
-/* MTABS */
-.mtabs{display:flex;border-bottom:1px solid var(--line);background:var(--bg2)}
-.mt{flex:1;padding:8px 2px;font-size:10px;font-family:var(--mono);color:var(--text3);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;letter-spacing:.5px;text-align:center}
+/* VIEW TOGGLE */
+.vtabs{display:flex;gap:6px;padding:10px 20px 0;background:var(--bg)}
+.vt{flex:1;padding:7px;border-radius:8px;font-size:10px;font-family:var(--mono);color:var(--text3);background:var(--bg4);border:none;cursor:pointer;letter-spacing:.5px;text-align:center}
+.vt.on{background:var(--gdim);color:var(--green);border:1px solid #0D3A20}
+
+.mtabs{display:flex;border-bottom:1px solid var(--line);background:var(--bg2);overflow-x:auto;scrollbar-width:none}
+.mtabs::-webkit-scrollbar{display:none}
+.mt{flex-shrink:0;padding:8px 10px;font-size:10px;font-family:var(--mono);color:var(--text3);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;letter-spacing:.5px}
 .mt.on{color:var(--green);border-bottom-color:var(--green)}
 
 /* RING */
-.ringsec{padding:18px;display:flex;flex-direction:column;align-items:center}
-.mnav{display:flex;align-items:center;gap:16px;margin-bottom:14px}
+.ringsec{padding:16px;display:flex;flex-direction:column;align-items:center}
+.mnav{display:flex;align-items:center;gap:14px;margin-bottom:12px}
 .mnb{background:none;border:1px solid var(--line2);color:var(--text3);width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
 .mnb:active{background:var(--bg4)}
-.mnlbl{font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:2px;min-width:120px;text-align:center}
-.rwrap{position:relative;width:200px;height:200px;margin-bottom:6px}
+.mnlbl{font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:2px;min-width:130px;text-align:center}
+.rwrap{position:relative;width:190px;height:190px;margin-bottom:6px}
 .rctr{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
-.ramt{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--text);letter-spacing:-1px;line-height:1}
-.rlbl{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:2px;margin-top:5px}
-.rbud{font-family:var(--mono);font-size:11px;color:var(--green);margin-top:4px}
+.ramt{font-family:var(--mono);font-size:24px;font-weight:700;color:var(--text);letter-spacing:-1px;line-height:1}
+.rlbl{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:2px;margin-top:4px}
+.rbud{font-family:var(--mono);font-size:11px;color:var(--green);margin-top:3px}
 
-/* PACE */
-.pace{background:var(--gdim);border:1px solid #0D3A20;border-radius:10px;padding:10px 14px;margin:0 20px 4px;display:flex;align-items:center;gap:10px}
+.pace{background:var(--gdim);border:1px solid #0D3A20;border-radius:10px;padding:9px 14px;margin:0 20px 4px;display:flex;align-items:center;gap:10px}
 .pdot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .ptxt{font-family:var(--mono);font-size:10px;color:#2A7A4A;flex:1;letter-spacing:.3px}
 .pbdg{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:4px;font-weight:500;letter-spacing:.5px}
 .pok{background:#0D3A20;color:var(--green)}.pwrn{background:#3A2A00;color:var(--amber)}.povr{background:var(--rdim);color:var(--red)}
 
-/* SUM ROWS */
 .srows{padding:4px 20px 10px}
-.srow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.srow{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
 .srow:last-child{border-bottom:none}
 .sdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .slbl{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:1px;flex:1}
@@ -83,19 +83,25 @@ body{display:flex;flex-direction:column;max-width:430px;margin:0 auto}
 .sb{height:100%;border-radius:1px}
 .samt{font-family:var(--mono);font-size:12px;font-weight:500;min-width:72px;text-align:right}
 
+/* YEAR VIEW */
+.year-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 20px 4px}
+.ystat{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+.ysl{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1.5px;margin-bottom:4px}
+.ysv{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--text);letter-spacing:-.5px}
+.ysv.pos{color:var(--green)}.ysv.neg{color:var(--red)}
+
 /* GENERIC */
-.sec{padding:13px 20px 4px}
+.sec{padding:12px 20px 4px}
 .sect{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:2px;margin-bottom:7px}
-.cc{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:13px;margin:0 20px 13px;height:182px;position:relative}
-.card{background:var(--bg2);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:0 20px 13px}
+.cc{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:12px;margin:0 20px 12px;height:175px;position:relative}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:0 20px 12px}
 .mets{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 20px 4px}
 .met{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
 .ml{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1.5px;margin-bottom:4px}
-.mv{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--text);letter-spacing:-.5px}
+.mv{font-family:var(--mono);font-size:17px;font-weight:700;color:var(--text);letter-spacing:-.5px}
 .mv.pos{color:var(--green)}.mv.neg{color:var(--red)}
 .ms{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:2px}
 
-/* ROWS */
 .crow{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line)}
 .crow:last-child{border-bottom:none}
 .cdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
@@ -148,16 +154,50 @@ body{display:flex;flex-direction:column;max-width:430px;margin:0 auto}
 .cmbdg{font-family:var(--mono);font-size:9px;padding:2px 6px;border-radius:4px}
 .cup{background:var(--rdim);color:var(--red)}.cdn{background:var(--gdim);color:var(--green)}
 
-.filt{display:flex;gap:6px;padding:8px 20px 4px;overflow-x:auto;scrollbar-width:none}
+.filt{display:flex;gap:5px;padding:8px 20px 4px;overflow-x:auto;scrollbar-width:none}
 .filt::-webkit-scrollbar{display:none}
-.fb{padding:5px 12px;border-radius:6px;font-size:10px;font-family:var(--mono);border:1px solid var(--line2);background:none;color:var(--text3);cursor:pointer;white-space:nowrap;letter-spacing:.5px}
+.fb{padding:5px 10px;border-radius:6px;font-size:10px;font-family:var(--mono);border:1px solid var(--line2);background:none;color:var(--text3);cursor:pointer;white-space:nowrap;letter-spacing:.5px}
 .fb.on{background:var(--gdim);border-color:#0D3A20;color:var(--green)}
+
+/* SETTINGS */
+.sset{padding:12px 20px 0}
+.sset-title{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:2px;margin-bottom:8px;margin-top:12px}
+.sset-card{background:var(--bg2);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:10px}
+.sset-row{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.sset-row:last-child{border-bottom:none}
+.sset-lbl{font-size:13px;color:var(--text);flex:1}
+.sset-sub{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:2px}
+.sset-btn{font-family:var(--mono);font-size:10px;padding:6px 12px;border-radius:6px;border:none;cursor:pointer;font-weight:600;letter-spacing:.5px;white-space:nowrap}
+.btn-green{background:var(--gdim);color:var(--green);border:1px solid #0D3A20}
+.btn-red{background:var(--rdim);color:var(--red);border:1px solid #3A0D15}
+.btn-blue{background:var(--blue-dim,#0D1A2E);color:var(--blue);border:1px solid #0D1A3A}
+
+/* LIMIT EDITOR */
+.lim-row{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.lim-row:last-child{border-bottom:none}
+.lim-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.lim-name{font-size:13px;color:var(--text);flex:1}
+.lim-inp{width:80px;background:var(--bg4);border:1px solid var(--line2);border-radius:6px;padding:5px 8px;font-family:var(--mono);font-size:12px;color:var(--text);text-align:right}
+.lim-del{background:none;border:none;color:var(--text3);font-size:16px;cursor:pointer;padding:2px 6px}
+
+/* ADD LIMIT FORM */
+.add-form{display:flex;gap:6px;padding:10px 14px;border-top:1px solid var(--line);flex-wrap:wrap}
+.add-inp{flex:1;min-width:80px;background:var(--bg4);border:1px solid var(--line2);border-radius:6px;padding:7px 10px;font-family:var(--mono);font-size:11px;color:var(--text)}
+.add-btn-s{background:var(--gdim);color:var(--green);border:1px solid #0D3A20;border-radius:6px;padding:7px 12px;font-family:var(--mono);font-size:10px;cursor:pointer;font-weight:600;white-space:nowrap}
+
+/* COLOR PICKER */
+.clr-pick{display:flex;gap:6px;flex-wrap:wrap;padding:8px 14px}
+.clr-opt{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid transparent}
+.clr-opt.sel{border-color:var(--text)}
+
 .empty{text-align:center;padding:32px;color:var(--text3);font-family:var(--mono);font-size:11px;letter-spacing:1px}
 .pb{padding-bottom:24px}
+.status-bar{background:var(--gdim);border:1px solid #0D3A20;border-radius:8px;padding:8px 12px;margin:8px 20px 0;font-family:var(--mono);font-size:10px;color:var(--green);text-align:center;display:none}
 </style>
 </head>
 <body>
 
+<!-- IMPORT SCREEN -->
 <div id="imp">
   <div class="i-logo">KK·BUDGET</div>
   <div class="i-ring">
@@ -169,12 +209,17 @@ body{display:flex;flex-direction:column;max-width:430px;margin:0 auto}
     <div class="i-kk">KK</div>
   </div>
   <div class="i-title">Laipni lūgts</div>
-  <div class="i-sub">Ielādē savu finanšu datu failu lai sāktu.<br>Dati paliek tikai uz tava ierīcē.</div>
+  <div class="i-sub">Ielādē sagatavotu JSON datu failu<br>vai importē tieši no bankas izrakstiem.<br>Dati paliek tikai uz tava ierīcē.</div>
   <input type="file" id="finput" accept=".json">
+  <input type="file" id="finput-xml" accept=".xml">
+  <input type="file" id="finput-csv" accept=".csv">
   <button class="i-btn" onclick="document.getElementById('finput').click()">↑ IMPORTĒT JSON DATUS</button>
+  <button class="i-btn2" onclick="document.getElementById('finput-xml').click()">+ CITADELE XML</button>
+  <button class="i-btn2" style="margin-top:6px" onclick="document.getElementById('finput-csv').click()">+ SWEDBANK CSV</button>
   <div class="i-note">DATI NETIEK SŪTĪTI UZ SERVERI<br>VISS NOTIEK LOKĀLI TAVĀ IERĪCĒ</div>
 </div>
 
+<!-- MAIN APP -->
 <div class="app" id="app">
 <nav class="nav">
   <button class="nb on" onclick="go('dash')" id="nb-dash"><span class="ni">◎</span>DASH</button>
@@ -182,45 +227,78 @@ body{display:flex;flex-direction:column;max-width:430px;margin:0 auto}
   <button class="nb" onclick="go('fixed')" id="nb-fixed"><span class="ni">▦</span>FIKSĒTIE</button>
   <button class="nb" onclick="go('budget')" id="nb-budget"><span class="ni">◈</span>BUDŽETS</button>
   <button class="nb" onclick="go('txs')" id="nb-txs"><span class="ni">≡</span>VISI</button>
+  <button class="nb" onclick="go('settings')" id="nb-settings"><span class="ni">⚙</span>SETTINGS</button>
 </nav>
 <div class="screens">
 
+<!-- DASH -->
 <div id="sc-dash" class="sc on">
-  <div class="hdr"><div class="hdr-logo">KK·BUDGET</div><div class="hdr-a"><button class="hdr-rst" onclick="resetData()">⟳ DATI</button><div class="hdr-kk">KK</div></div></div>
-  <div class="ringsec">
-    <div class="mnav">
-      <button class="mnb" onclick="prevM()">‹</button>
-      <div class="mnlbl" id="mlbl">—</div>
-      <button class="mnb" onclick="nextM()">›</button>
-    </div>
-    <div class="rwrap"><canvas id="rc" width="200" height="200"></canvas>
-      <div class="rctr"><div class="ramt" id="ramt">€0</div><div class="rlbl">IZTĒRĒTS</div><div class="rbud" id="rbud">no €0</div></div>
-    </div>
+  <div class="hdr"><div class="hdr-logo">KK·BUDGET</div><div class="hdr-kk">KK</div></div>
+  <div class="vtabs">
+    <button class="vt on" id="vt-mon" onclick="setView('mon')">MĒNESIS</button>
+    <button class="vt" id="vt-year" onclick="setView('year')">GADS</button>
   </div>
-  <div class="pace"><div class="pdot"></div><div class="ptxt" id="ptxt">—</div><div class="pbdg pok" id="pbdg">—</div></div>
-  <div class="srows">
-    <div class="srow"><div class="sdot" style="background:var(--green)"></div><div class="slbl">IENĀKUMI</div><div class="sbw"></div><div class="samt" id="sinc" style="color:var(--green)">—</div></div>
-    <div class="srow"><div class="sdot" style="background:var(--blue)"></div><div class="slbl">KARTE</div><div class="sbw"><div class="sb" id="scb" style="background:var(--blue)"></div></div><div class="samt" id="scard">—</div></div>
-    <div class="srow"><div class="sdot" style="background:#2A3A5A"></div><div class="slbl">FIKSĒTIE</div><div class="sbw"><div class="sb" id="sfb" style="background:#2A3A5A"></div></div><div class="samt" id="sfix">—</div></div>
-    <div class="srow"><div class="sdot" id="sfd" style="background:var(--green)"></div><div class="slbl">BRĪVAIS</div><div class="sbw"></div><div class="samt" id="sfree">—</div></div>
+
+  <!-- MONTH VIEW -->
+  <div id="view-mon">
+    <div class="ringsec">
+      <div class="mnav">
+        <button class="mnb" onclick="prevM()">‹</button>
+        <div class="mnlbl" id="mlbl">—</div>
+        <button class="mnb" onclick="nextM()">›</button>
+      </div>
+      <div class="rwrap"><canvas id="rc" width="190" height="190"></canvas>
+        <div class="rctr"><div class="ramt" id="ramt">€0</div><div class="rlbl">IZTĒRĒTS</div><div class="rbud" id="rbud">no €0</div></div>
+      </div>
+    </div>
+    <div class="pace"><div class="pdot"></div><div class="ptxt" id="ptxt">—</div><div class="pbdg pok" id="pbdg">—</div></div>
+    <div class="srows">
+      <div class="srow"><div class="sdot" style="background:var(--green)"></div><div class="slbl">IENĀKUMI</div><div class="sbw"></div><div class="samt" id="sinc" style="color:var(--green)">—</div></div>
+      <div class="srow"><div class="sdot" style="background:var(--blue)"></div><div class="slbl">KARTE</div><div class="sbw"><div class="sb" id="scb" style="background:var(--blue)"></div></div><div class="samt" id="scard">—</div></div>
+      <div class="srow"><div class="sdot" style="background:#2A3A5A"></div><div class="slbl">FIKSĒTIE</div><div class="sbw"><div class="sb" id="sfb" style="background:#2A3A5A"></div></div><div class="samt" id="sfix">—</div></div>
+      <div class="srow"><div class="sdot" id="sfd" style="background:var(--green)"></div><div class="slbl">BRĪVAIS</div><div class="sbw"></div><div class="samt" id="sfree">—</div></div>
+    </div>
+    <div class="sec"><div class="sect">MĒNEŠU IZDEVUMI</div></div>
+    <div class="cc"><canvas id="dc"></canvas></div>
+    <div class="sec"><div class="sect">IENĀKUMI</div></div>
+    <div class="card" id="dinc"></div>
   </div>
-  <div class="sec"><div class="sect">4 MĒNEŠI · IZDEVUMI</div></div>
-  <div class="cc"><canvas id="dc"></canvas></div>
-  <div class="sec"><div class="sect">IENĀKUMI</div></div>
-  <div class="card" id="dinc"></div>
+
+  <!-- YEAR VIEW -->
+  <div id="view-year" style="display:none">
+    <div class="ringsec">
+      <div class="mnav">
+        <button class="mnb" onclick="prevY()">‹</button>
+        <div class="mnlbl" id="ylbl">2026</div>
+        <button class="mnb" onclick="nextY()">›</button>
+      </div>
+      <div class="rwrap"><canvas id="yrc" width="190" height="190"></canvas>
+        <div class="rctr"><div class="ramt" id="yramt">€0</div><div class="rlbl">IZTĒRĒTS</div><div class="rbud" id="yrbud">gads</div></div>
+      </div>
+    </div>
+    <div class="year-stats" id="ystats"></div>
+    <div class="sec"><div class="sect">PA MĒNEŠIEM</div></div>
+    <div class="cc" style="height:185px"><canvas id="ybc"></canvas></div>
+    <div class="sec"><div class="sect">TOP KATEGORIJAS</div></div>
+    <div class="card" id="ycats"></div>
+    <div class="sec"><div class="sect">GADA IENĀKUMI</div></div>
+    <div class="card" id="yinc"></div>
+  </div>
   <div class="pb"></div>
 </div>
 
+<!-- KARTE -->
 <div id="sc-card" class="sc">
   <div class="hdr"><div class="hdr-t">CITADELE · KARTE</div><div class="hdr-kk">KK</div></div>
   <div class="mtabs" id="ctabs"></div>
   <div class="mets" id="cmets"></div>
   <div class="sec"><div class="sect">KATEGORIJAS</div></div>
-  <div class="cc" style="height:172px"><canvas id="cpie"></canvas></div>
+  <div class="cc" style="height:170px"><canvas id="cpie"></canvas></div>
   <div class="card" id="ccats"></div>
   <div class="pb"></div>
 </div>
 
+<!-- FIKSĒTIE -->
 <div id="sc-fixed" class="sc">
   <div class="hdr"><div class="hdr-t">SWEDBANK · FIKSĒTIE</div><div class="hdr-kk">KK</div></div>
   <div class="mtabs" id="ftabs"></div>
@@ -232,6 +310,7 @@ body{display:flex;flex-direction:column;max-width:430px;margin:0 auto}
   <div class="pb"></div>
 </div>
 
+<!-- BUDŽETS -->
 <div id="sc-budget" class="sc">
   <div class="hdr"><div class="hdr-t">BUDŽETS · LIMITI</div><div class="hdr-kk">KK</div></div>
   <div class="mtabs" id="btabs"></div>
@@ -244,6 +323,7 @@ body{display:flex;flex-direction:column;max-width:430px;margin:0 auto}
   <div class="pb"></div>
 </div>
 
+<!-- VISI -->
 <div id="sc-txs" class="sc">
   <div class="hdr"><div class="hdr-t">VISI DARĪJUMI</div><div class="hdr-kk">KK</div></div>
   <div class="mtabs" id="ttabs"></div>
@@ -252,154 +332,797 @@ body{display:flex;flex-direction:column;max-width:430px;margin:0 auto}
   <div class="pb"></div>
 </div>
 
+<!-- SETTINGS -->
+<div id="sc-settings" class="sc">
+  <div class="hdr"><div class="hdr-t">SETTINGS</div><div class="hdr-kk">KK</div></div>
+  <div id="status-bar" class="status-bar"></div>
+
+  <div class="sset">
+    <div class="sset-title">DATU IMPORTS</div>
+    <div class="sset-card">
+      <div class="sset-row">
+        <div><div class="sset-lbl">Citadele XML</div><div class="sset-sub">camt.052 izraksts</div></div>
+        <button class="sset-btn btn-green" onclick="document.getElementById('xml-inp').click()">↑ XML</button>
+        <input type="file" id="xml-inp" accept=".xml" style="display:none">
+      </div>
+      <div class="sset-row">
+        <div><div class="sset-lbl">Swedbank CSV</div><div class="sset-sub">Bankas izraksts CSV</div></div>
+        <button class="sset-btn btn-blue" onclick="document.getElementById('csv-inp').click()">↑ CSV</button>
+        <input type="file" id="csv-inp" accept=".csv" style="display:none">
+      </div>
+      <div class="sset-row">
+        <div><div class="sset-lbl">JSON backup</div><div class="sset-sub">Importē saglabātos datus</div></div>
+        <button class="sset-btn btn-green" onclick="document.getElementById('json-inp').click()">↑ JSON</button>
+        <input type="file" id="json-inp" accept=".json" style="display:none">
+      </div>
+    </div>
+
+    <div class="sset-title">DATU EKSPORTS</div>
+    <div class="sset-card">
+      <div class="sset-row">
+        <div><div class="sset-lbl">Eksportēt JSON</div><div class="sset-sub">Saglabā visus datus</div></div>
+        <button class="sset-btn btn-green" onclick="exportJSON()">↓ JSON</button>
+      </div>
+    </div>
+
+    <div class="sset-title">BUDŽETA LIMITI</div>
+    <div class="card" style="margin:0 0 10px">
+      <div id="lim-list"></div>
+      <div class="add-form">
+        <input class="add-inp" id="new-cat-name" placeholder="Kategorija...">
+        <input class="add-inp" id="new-cat-lim" type="number" placeholder="€ limits" style="max-width:80px">
+        <div class="clr-pick" id="new-cat-clr"></div>
+        <button class="add-btn-s" onclick="addCategory()">+ PIEVIENOT</button>
+      </div>
+    </div>
+
+    <div class="sset-title">DATU DZĒŠANA</div>
+    <div class="sset-card">
+      <div class="sset-row">
+        <div><div class="sset-lbl">Dzēst visus datus</div><div class="sset-sub">Atgriežas importa ekrānā</div></div>
+        <button class="sset-btn btn-red" onclick="resetData()">DZĒST</button>
+      </div>
+    </div>
+  </div>
+  <div class="pb"></div>
+</div>
+
 </div>
 </div>
 
 <script>
-const CLR={'Pārtika':'#34C759','Kafejnīcas':'#FF9F0A','Aptieka':'#FF2D55','Veterinārais':'#AF52DE','Mājai':'#378ADD','Dārzs':'#30D158','Auto':'#636366','Degviela':'#FF6B35','Transports':'#32ADE6','Auto serviss':'#8E6E50','Apģērbs':'#FF375F','Tehnoloģijas':'#5E5CE6','AI abonements':'#BF5AF2','Amazon':'#FF9500','Piegāde':'#00C7BE','Veselība':'#FF3B30','Cits':'#3A3A5A','Elektroenerģija':'#FFD60A','Mobilie':'#64D2FF','Apdrošināšana':'#8E8E93','Komunālie':'#5E5CE6','Nodokļi':'#FF453A','Apsardze':'#A2845E','Ģimene':'#FF6B96','Mežs/Zeme':'#32D74B','Bankomāts':'#3A3A5A','Bankas komisija':'#2A2A3A'};
-const BUD={'Pārtika':700,'Aptieka':200,'Veterinārais':200,'Mājai':150,'AI abonements':30,'Tehnoloģijas':50,'Apģērbs':80,'Dārzs':50,'Auto':100,'Degviela':50,'Kafejnīcas':30,'Elektroenerģija':180,'Mobilie':175,'Apdrošināšana':135,'Komunālie':30,'Apsardze':20};
-const SUBS=[{name:'ChatGPT Plus',cat:'AI abonements',amt:23,freq:'ikmēneša',icon:'🤖'},{name:'LMT / Mobilie',cat:'Mobilie',amt:172.33,freq:'ikmēneša',icon:'📱'},{name:'Balcia apdrošināšana',cat:'Apdrošināšana',amt:130.48,freq:'ikmēneša',icon:'🛡'},{name:'Apple abonements',cat:'Tehnoloģijas',amt:2.99,freq:'ikmēneša',icon:'🍎'},{name:'Anthropic API',cat:'AI abonements',amt:5.38,freq:'ikmēneša',icon:'🔮'},{name:'Mega Sargs',cat:'Apsardze',amt:18.15,freq:'ikmēneša',icon:'🔐'}];
-const MLV={'2026-01':'JANVĀRIS','2026-02':'FEBRUĀRIS','2026-03':'MARTS','2026-04':'APRĪLIS','2026-05':'MAIJS','2026-06':'JŪNIJS','2026-07':'JŪLIJS','2026-08':'AUGUSTS','2026-09':'SEPTEMBRIS','2026-10':'OKTOBRIS','2026-11':'NOVEMBRIS','2026-12':'DECEMBRIS'};
-const MS3={'2026-01':'JAN','2026-02':'FEB','2026-03':'MAR','2026-04':'APR','2026-05':'MAI','2026-06':'JŪN','2026-07':'JŪL','2026-08':'AUG','2026-09':'SEP','2026-10':'OKT','2026-11':'NOV','2026-12':'DEC'};
+/* ══ DEFAULT CONFIG ══ */
+const DEFAULT_BUD = {
+  'Pārtika':700,'Aptieka':200,'Veterinārais':200,'Mājai':150,
+  'AI abonements':30,'Tehnoloģijas':50,'Apģērbs':80,'Dārzs':50,
+  'Auto':100,'Degviela':50,'Kafejnīcas':30,
+  'Elektroenerģija':180,'Mobilie':175,'Apdrošināšana':135,'Komunālie':30,'Apsardze':20
+};
+const DEFAULT_CLR = {
+  'Pārtika':'#34C759','Kafejnīcas':'#FF9F0A','Aptieka':'#FF2D55','Veterinārais':'#AF52DE',
+  'Mājai':'#378ADD','Dārzs':'#30D158','Auto':'#636366','Degviela':'#FF6B35',
+  'Transports':'#32ADE6','Auto serviss':'#8E6E50','Apģērbs':'#FF375F',
+  'Tehnoloģijas':'#5E5CE6','AI abonements':'#BF5AF2','Amazon':'#FF9500',
+  'Piegāde':'#00C7BE','Veselība':'#FF3B30','Cits':'#3A3A5A',
+  'Elektroenerģija':'#FFD60A','Mobilie':'#64D2FF','Apdrošināšana':'#8E8E93',
+  'Komunālie':'#5E5CE6','Nodokļi':'#FF453A','Apsardze':'#A2845E',
+  'Ģimene':'#FF6B96','Mežs/Zeme':'#32D74B','Bankomāts':'#3A3A5A','Bankas komisija':'#2A2A3A'
+};
+const COLOR_PALETTE = ['#34C759','#FF9F0A','#FF2D55','#AF52DE','#378ADD','#30D158',
+  '#636366','#FF6B35','#32ADE6','#FF375F','#5E5CE6','#BF5AF2','#FF9500',
+  '#00C7BE','#FF3B30','#FFD60A','#64D2FF','#A2845E','#FF6B96','#32D74B'];
+const SUBS = [
+  {name:'ChatGPT Plus',cat:'AI abonements',amt:23,freq:'ikmēneša',icon:'🤖'},
+  {name:'LMT / Mobilie',cat:'Mobilie',amt:172.33,freq:'ikmēneša',icon:'📱'},
+  {name:'Balcia apdrošināšana',cat:'Apdrošināšana',amt:130.48,freq:'ikmēneša',icon:'🛡'},
+  {name:'Apple abonements',cat:'Tehnoloģijas',amt:2.99,freq:'ikmēneša',icon:'🍎'},
+  {name:'Anthropic API',cat:'AI abonements',amt:5.38,freq:'ikmēneša',icon:'🔮'},
+  {name:'Mega Sargs',cat:'Apsardze',amt:18.15,freq:'ikmēneša',icon:'🔐'},
+];
+const MLV = {'2026-01':'JANVĀRIS','2026-02':'FEBRUĀRIS','2026-03':'MARTS','2026-04':'APRĪLIS',
+  '2026-05':'MAIJS','2026-06':'JŪNIJS','2026-07':'JŪLIJS','2026-08':'AUGUSTS',
+  '2026-09':'SEPTEMBRIS','2026-10':'OKTOBRIS','2026-11':'NOVEMBRIS','2026-12':'DECEMBRIS'};
+const MS3 = {'2026-01':'JAN','2026-02':'FEB','2026-03':'MAR','2026-04':'APR',
+  '2026-05':'MAI','2026-06':'JŪN','2026-07':'JŪL','2026-08':'AUG',
+  '2026-09':'SEP','2026-10':'OKT','2026-11':'NOV','2026-12':'DEC'};
 
-let D=null,MONTHS=[],MON={},curM='',cM='',fM='',bM='',tM='',tSrc='all';
-const CH={};
-const f0=v=>'€'+Math.abs(v).toFixed(0);
-const f2=v=>'€'+Math.abs(v).toFixed(2);
-const mi=m=>MONTHS.indexOf(m);
-const gl=m=>(MLV[m]||m)+' '+(m.split('-')[0]);
-const g3=m=>MS3[m]||m.slice(5);
+/* ══ MCC KATEGORIJAS ══ */
+const MCC_CAT = {
+  '5311':'Pārtika','5411':'Pārtika','5499':'Pārtika','5921':'Pārtika','5422':'Pārtika',
+  '5814':'Kafejnīcas','5812':'Kafejnīcas',
+  '742':'Veterinārais','8071':'Veselība','5912':'Aptieka',
+  '5200':'Mājai','5712':'Mājai','5722':'Mājai',
+  '5261':'Dārzs','5992':'Dārzs',
+  '5533':'Auto','5511':'Auto','5541':'Auto','5542':'Degviela',
+  '5552':'Transports','7523':'Transports','7538':'Auto serviss','7542':'Auto serviss',
+  '5691':'Apģērbs','5699':'Apģērbs','5651':'Apģērbs',
+  '5734':'Tehnoloģijas','5732':'Tehnoloģijas','5818':'Tehnoloģijas',
+  '5099':'Cits','5942':'Amazon','4215':'Piegāde','':'Bankas komisija',
+};
+
+/* ══ STATE ══ */
+let D = null, MONTHS = [], MON = {};
+let BUD = {...DEFAULT_BUD}, CLR = {...DEFAULT_CLR};
+let curM = '', cM = '', fM = '', bM = '', tM = '', tSrc = 'all';
+let curY = '2026', dashView = 'mon';
+let selColor = COLOR_PALETTE[0];
+const CH = {};
+
+/* ══ UTILS ══ */
+const f0 = v => '€' + Math.abs(v).toFixed(0);
+const f2 = v => '€' + Math.abs(v).toFixed(2);
+const mi = m => MONTHS.indexOf(m);
+const gl = m => (MLV[m] || m) + ' ' + (m.split('-')[0]);
+const g3 = m => MS3[m] || m.slice(5);
 function kc(id){if(CH[id]){CH[id].destroy();delete CH[id];}}
-function ct(txs,month,skip=[]){const map={};txs.filter(t=>(month==='all'||t.month===month)&&!skip.includes(t.cat)).forEach(t=>{map[t.cat]=(map[t.cat]||0)+t.amt;});return Object.entries(map).sort((a,b)=>b[1]-a[1]);}
+function ct(txs,month,skip=[]){
+  const map={};
+  txs.filter(t=>(month==='all'||t.month===month)&&!skip.includes(t.cat))
+    .forEach(t=>{map[t.cat]=(map[t.cat]||0)+t.amt;});
+  return Object.entries(map).sort((a,b)=>b[1]-a[1]);
+}
+function clr(cat){return CLR[cat]||'#3A3A5A';}
+function showStatus(msg, ok=true){
+  const el = document.getElementById('status-bar');
+  el.textContent = msg;
+  el.style.background = ok ? 'var(--gdim)' : 'var(--rdim)';
+  el.style.color = ok ? 'var(--green)' : 'var(--red)';
+  el.style.display = 'block';
+  setTimeout(()=>{el.style.display='none';}, 3000);
+}
 
-document.getElementById('finput').addEventListener('change',e=>{
-  const f=e.target.files[0];if(!f)return;
+/* ══ CITADELE XML PARSER ══ */
+function parseCitadeleXML(xmlText) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(xmlText, 'text/xml');
+  const ns = 'urn:iso:std:iso:20022:tech:xsd:camt.052.001.02';
+  const entries = doc.getElementsByTagNameNS(ns, 'Ntry');
+  const txs = [], incs = [];
+
+  Array.from(entries).forEach(ntry => {
+    const amtEl = ntry.getElementsByTagNameNS(ns,'Amt')[0];
+    const drEl = ntry.getElementsByTagNameNS(ns,'CdtDbtInd')[0];
+    const dateEl = ntry.querySelector
+      ? ntry.querySelector('BookgDt Dt') || ntry.getElementsByTagNameNS(ns,'Dt')[0]
+      : ntry.getElementsByTagNameNS(ns,'Dt')[0];
+
+    if(!amtEl||!drEl||!dateEl) return;
+    const amt = parseFloat(amtEl.textContent);
+    const dir = drEl.textContent.trim();
+    const date = dateEl.textContent.trim();
+    const month = date.slice(0,7);
+
+    // Get name
+    const cdtrEls = ntry.getElementsByTagNameNS(ns,'Cdtr');
+    const dbtrEls = ntry.getElementsByTagNameNS(ns,'Dbtr');
+    let name = 'N/A';
+    if(cdtrEls.length){
+      const nm = cdtrEls[0].getElementsByTagNameNS(ns,'Nm')[0];
+      if(nm) name = nm.textContent.trim();
+    } else if(dbtrEls.length){
+      const nm = dbtrEls[0].getElementsByTagNameNS(ns,'Nm')[0];
+      if(nm) name = nm.textContent.trim();
+    }
+
+    // Get ref for MCC
+    const rmtEls = ntry.getElementsByTagNameNS(ns,'Ustrd');
+    const ref = rmtEls.length ? rmtEls[0].textContent : '';
+    let mcc = '';
+    if(ref.includes('MCC-')) mcc = ref.split('MCC-')[1].split(' ')[0];
+
+    // Skip inter-account
+    if(dir==='CRDT' && name.toUpperCase().includes('KUPŠ')) return;
+
+    // Categorize
+    let cat = MCC_CAT[mcc] || 'Cits';
+    const nl = name.toLowerCase();
+    if(['benu','apotheka','aptieka','lases','internetaptieka','meness'].some(x=>nl.includes(x))) cat='Aptieka';
+    else if(['animu','veterinar','z&o','z&amp;o'].some(x=>nl.includes(x))) cat='Veterinārais';
+    else if(['openai','chatgpt'].some(x=>nl.includes(x))) cat='AI abonements';
+    else if(['amzn','amazon'].some(x=>nl.includes(x))) cat='Amazon';
+
+    const clean = name.split(' LV ')[0].split(' KULDIGA')[0].trim().slice(0,40);
+
+    if(dir==='CRDT'){
+      incs.push({date,month,name:clean,amt,type:'Ienākumi'});
+    } else {
+      txs.push({s:'C',date,month,name:clean,amt:Math.round(amt*100)/100,dir,cat});
+    }
+  });
+
+  return {txs, incs};
+}
+
+/* ══ SWEDBANK CSV PARSER ══ */
+function parseSwedCSV(csvText) {
+  const lines = csvText.split(/\r?\n/).filter(l=>l.trim());
+  if(!lines.length) return {txs:[], incs:[]};
+
+  // Find header line
+  let headerIdx = 0;
+  for(let i=0;i<Math.min(5,lines.length);i++){
+    if(lines[i].toLowerCase().includes('datums')||lines[i].toLowerCase().includes('date')){
+      headerIdx=i; break;
+    }
+  }
+
+  const txs=[], incs=[];
+
+  for(let i=headerIdx+1;i<lines.length;i++){
+    const cols = lines[i].split(';');
+    if(cols.length < 7) continue;
+
+    // Swedbank format: account, type, date, name, ref, amount, currency, D/K
+    const rtype = (cols[1]||'').trim();
+    if(['10','82'].includes(rtype)) continue;
+
+    const dateRaw = (cols[2]||'').trim();
+    const name = (cols[3]||'').trim();
+    const ref = (cols[4]||'').trim();
+    const amtRaw = (cols[5]||'').replace(',','.').trim();
+    const dk = (cols[7]||'').trim();
+
+    if(!dateRaw||!amtRaw||!dk) continue;
+
+    // Parse date DD.MM.YYYY -> YYYY-MM-DD
+    const dp = dateRaw.split('.');
+    if(dp.length!==3) continue;
+    const date = `${dp[2]}-${dp[1]}-${dp[0]}`;
+    const month = date.slice(0,7);
+    const amt = parseFloat(amtRaw);
+    if(isNaN(amt)) continue;
+
+    const n = name.toLowerCase(), r = ref.toLowerCase();
+
+    // Skip inter-account
+    if(n.includes('kupš') && r.includes('citadele')) continue;
+    if(name.toLowerCase().includes('beigu atlikums')) continue;
+
+    // Categorize
+    let cat = 'Cits';
+    if(rtype==='KOM') cat='Bankas komisija';
+    else if(n.includes('enefit')) cat='Elektroenerģija';
+    else if(n.includes('latvijas mobilais')||n.includes('lmt retail')) cat='Mobilie';
+    else if(n.includes('balcia')) cat='Apdrošināšana';
+    else if(n.includes('kuldīgas komunālie')||n.includes('aktivserviss')) cat='Komunālie';
+    else if(n.includes('kuldīgas novada')||n.includes('valsts kase')) cat='Nodokļi';
+    else if(n.includes('mega sargs')) cat='Apsardze';
+    else if(r.includes('naudas izsn')) cat='Bankomāts';
+    else if(n.includes('grieta kupš')) cat='Ģimene';
+    else if(n.includes('anthropic')) cat='AI abonements';
+    else if(n.includes('vārmes mežniecība')) cat='Mežs/Zeme';
+    else if(n.includes('semicom')) cat='Tehnoloģijas';
+
+    if(dk==='K'){
+      const itype = n.includes('sārmi') ? 'Alga'
+        : n.includes('reķi sa') ? 'Nomas ienākumi'
+        : n.includes('etc kinnisvara') ? 'Dividendes'
+        : n.includes('balta') ? 'Atmaksa' : 'Citi ienākumi';
+      if(amt>0) incs.push({date,month,name:name.slice(0,40),amt,type:itype});
+    } else {
+      txs.push({s:'S',date,month,name:name.slice(0,40),amt:Math.round(amt*100)/100,dir:'DBIT',cat});
+    }
+  }
+  return {txs, incs};
+}
+
+/* ══ MERGE DATA ══ */
+function mergeData(existing, newTxs, newIncs, source) {
+  const D2 = existing ? JSON.parse(JSON.stringify(existing)) : {
+    citadele:[], swedbank:[], incomes:[], monthly:{}
+  };
+
+  // Duplicate check helper
+  const isDup = (arr, t) => arr.some(e =>
+    e.date===t.date && Math.abs(e.amt-t.amt)<0.01 && e.name===t.name
+  );
+
+  newTxs.forEach(t => {
+    const arr = source==='C' ? D2.citadele : D2.swedbank;
+    if(!isDup(arr, t)) arr.push(t);
+  });
+
+  newIncs.forEach(t => {
+    if(!isDup(D2.incomes, t)) D2.incomes.push(t);
+  });
+
+  // Recalculate monthly
+  const allMonths = new Set([
+    ...D2.citadele.map(t=>t.month),
+    ...D2.swedbank.map(t=>t.month)
+  ]);
+  D2.monthly = {};
+  allMonths.forEach(m => {
+    const card = D2.citadele.filter(t=>t.month===m&&t.dir==='DBIT'&&t.cat!=='Bankas komisija')
+      .reduce((s,t)=>s+t.amt,0);
+    const fixed = D2.swedbank.filter(t=>t.month===m&&!['Bankas komisija'].includes(t.cat))
+      .reduce((s,t)=>s+t.amt,0);
+    const income = D2.incomes.filter(t=>t.month===m).reduce((s,t)=>s+t.amt,0);
+    D2.monthly[m] = {
+      card: Math.round(card*100)/100,
+      fixed: Math.round(fixed*100)/100,
+      income: Math.round(income*100)/100,
+      free: Math.round((income-card-fixed)*100)/100
+    };
+  });
+
+  return D2;
+}
+
+/* ══ FILE INPUTS ══ */
+// Import screen
+document.getElementById('finput').addEventListener('change', e => {
+  const f=e.target.files[0]; if(!f) return;
   const r=new FileReader();
-  r.onload=ev=>{try{loadData(JSON.parse(ev.target.result));}catch{alert('Kļūda lasot failu.');}};
+  r.onload=ev=>{try{loadData(JSON.parse(ev.target.result));}catch{alert('Kļūda lasot JSON failu.');}};
+  r.readAsText(f);
+});
+document.getElementById('finput-xml').addEventListener('change', e => {
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    const {txs,incs}=parseCitadeleXML(ev.target.result);
+    const d2=mergeData(D,txs,incs,'C');
+    loadData(d2);
+  };
+  r.readAsText(f);
+});
+document.getElementById('finput-csv').addEventListener('change', e => {
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    const {txs,incs}=parseSwedCSV(ev.target.result);
+    const d2=mergeData(D,txs,incs,'S');
+    loadData(d2);
+  };
+  r.readAsText(f, 'UTF-8');
+});
+
+// Settings imports
+document.getElementById('xml-inp').addEventListener('change', e => {
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    try{
+      const {txs,incs}=parseCitadeleXML(ev.target.result);
+      D=mergeData(D,txs,incs,'C');
+      saveData();
+      rebuildMonths();
+      showStatus(`✓ Citadele XML: ${txs.length} darījumi importēti`);
+      rDash();
+    }catch(err){showStatus('✗ XML kļūda: '+err.message, false);}
+    e.target.value='';
+  };
+  r.readAsText(f);
+});
+document.getElementById('csv-inp').addEventListener('change', e => {
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    try{
+      const {txs,incs}=parseSwedCSV(ev.target.result);
+      D=mergeData(D,txs,incs,'S');
+      saveData();
+      rebuildMonths();
+      showStatus(`✓ Swedbank CSV: ${txs.length} darījumi importēti`);
+      rDash();
+    }catch(err){showStatus('✗ CSV kļūda: '+err.message, false);}
+    e.target.value='';
+  };
+  r.readAsText(f,'UTF-8');
+});
+document.getElementById('json-inp').addEventListener('change', e => {
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    try{
+      loadData(JSON.parse(ev.target.result));
+      showStatus('✓ JSON dati ielādēti');
+    }catch{showStatus('✗ JSON kļūda', false);}
+    e.target.value='';
+  };
   r.readAsText(f);
 });
 
-function loadData(json){
-  D=json;
-  const am=new Set([...(D.citadele||[]).map(t=>t.month),...(D.swedbank||[]).map(t=>t.month)]);
-  MONTHS=[...am].sort();
-  MON=D.monthly||{};
-  curM=cM=fM=bM=tM=MONTHS[MONTHS.length-1];
-  localStorage.setItem('kk_budget_data',JSON.stringify(D));
-  document.getElementById('imp').style.display='none';
-  document.getElementById('app').style.display='flex';
+/* ══ LOAD / SAVE ══ */
+function loadData(json) {
+  D = json;
+  rebuildMonths();
+  localStorage.setItem('kk_budget_data', JSON.stringify(D));
+  document.getElementById('imp').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
   go('dash');
 }
 
-function resetData(){if(confirm('Dzēst datus un atgriezties importa ekrānā?')){localStorage.removeItem('kk_budget_data');location.reload();}}
+function rebuildMonths() {
+  const am = new Set([
+    ...(D.citadele||[]).map(t=>t.month),
+    ...(D.swedbank||[]).map(t=>t.month)
+  ]);
+  MONTHS = [...am].sort();
+  MON = D.monthly || {};
+  if(!curM || !MONTHS.includes(curM)) curM = MONTHS[MONTHS.length-1]||'';
+  cM=fM=bM=tM=curM;
+  const years = [...new Set(MONTHS.map(m=>m.slice(0,4)))].sort();
+  if(!years.includes(curY)) curY = years[years.length-1]||'2026';
+}
 
+function saveData() {
+  if(D) localStorage.setItem('kk_budget_data', JSON.stringify(D));
+  localStorage.setItem('kk_bud', JSON.stringify(BUD));
+  localStorage.setItem('kk_clr', JSON.stringify(CLR));
+}
+
+function resetData(){
+  if(confirm('Dzēst visus datus?')){
+    localStorage.clear();
+    location.reload();
+  }
+}
+
+async function exportJSON(){
+  const json = JSON.stringify(D, null, 2);
+  const blob = new Blob([json], {type:'application/json'});
+  const fname = `kk-budget-${new Date().toISOString().slice(0,10)}.json`;
+  if(navigator.canShare){
+    try{
+      const file = new File([blob], fname, {type:'application/json'});
+      if(navigator.canShare({files:[file]})){
+        await navigator.share({files:[file], title:fname});
+        return;
+      }
+    }catch(e){}
+  }
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=fname;
+  a.click();
+}
+
+/* ══ NAV ══ */
 function go(id){
   document.querySelectorAll('.sc,.nb').forEach(e=>e.classList.remove('on'));
   document.getElementById('sc-'+id).classList.add('on');
   document.getElementById('nb-'+id).classList.add('on');
-  ({dash:rD,card:rC,fixed:rF,budget:rB,txs:rT})[id]();
+  ({dash:rDash,card:rCard,fixed:rFixed,budget:rBudget,txs:rTxs,settings:rSettings})[id]();
 }
 
+/* ══ MONTH TABS ══ */
 function tabs(el,cur,cb,noAll){
-  const e=document.getElementById(el);e.innerHTML='';
-  if(!noAll){const b=document.createElement('button');b.className='mt'+(cur==='all'?' on':'');b.textContent='VISI';b.onclick=()=>cb('all');e.appendChild(b);}
-  MONTHS.forEach(m=>{const b=document.createElement('button');b.className='mt'+(cur===m?' on':'');b.textContent=g3(m);b.onclick=()=>cb(m);e.appendChild(b);});
+  const e=document.getElementById(el); e.innerHTML='';
+  if(!noAll){
+    const b=document.createElement('button');
+    b.className='mt'+(cur==='all'?' on':'');
+    b.textContent='VISI'; b.onclick=()=>cb('all'); e.appendChild(b);
+  }
+  MONTHS.forEach(m=>{
+    const b=document.createElement('button');
+    b.className='mt'+(cur===m?' on':'');
+    b.textContent=g3(m); b.onclick=()=>cb(m); e.appendChild(b);
+  });
 }
 
-let ri=null;
-function drawRing(spent,budget,color){
-  const ctx=document.getElementById('rc').getContext('2d');
-  if(ri){ri.destroy();ri=null;}
-  const p=Math.min(1,spent/budget);
-  ri=new Chart(ctx,{type:'doughnut',data:{datasets:[{data:[p,Math.max(0,1-p)],backgroundColor:[color,'#1A1A27'],borderWidth:0,borderRadius:4}]},options:{responsive:false,cutout:'72%',plugins:{legend:{display:false},tooltip:{enabled:false}},animation:{duration:600}}});
+/* ══ VIEW TOGGLE ══ */
+function setView(v){
+  dashView=v;
+  document.getElementById('vt-mon').className='vt'+(v==='mon'?' on':'');
+  document.getElementById('vt-year').className='vt'+(v==='year'?' on':'');
+  document.getElementById('view-mon').style.display=v==='mon'?'':'none';
+  document.getElementById('view-year').style.display=v==='year'?'':'none';
+  if(v==='year') rYear();
 }
 
-function prevM(){const i=mi(curM);if(i>0){curM=MONTHS[i-1];rD();}}
-function nextM(){const i=mi(curM);if(i<MONTHS.length-1){curM=MONTHS[i+1];rD();}}
+/* ══ RING ══ */
+let ri=null, yri=null;
+function drawRing(canvasId, spent, budget, color, instVar){
+  const canvas=document.getElementById(canvasId);
+  if(!canvas) return null;
+  const ctx=canvas.getContext('2d');
+  if(instVar){instVar.destroy();}
+  const p=Math.min(1,budget>0?spent/budget:0);
+  return new Chart(ctx,{
+    type:'doughnut',
+    data:{datasets:[{data:[p,Math.max(0,1-p)],backgroundColor:[color,'#1A1A27'],borderWidth:0,borderRadius:4}]},
+    options:{responsive:false,cutout:'72%',plugins:{legend:{display:false},tooltip:{enabled:false}},animation:{duration:600}}
+  });
+}
 
-function rD(){
-  if(!D)return;
+/* ══ DASH ══ */
+function prevM(){const i=mi(curM);if(i>0){curM=MONTHS[i-1];rDash();}}
+function nextM(){const i=mi(curM);if(i<MONTHS.length-1){curM=MONTHS[i+1];rDash();}}
+function prevY(){const years=[...new Set(MONTHS.map(m=>m.slice(0,4)))].sort();const i=years.indexOf(curY);if(i>0){curY=years[i-1];rYear();}}
+function nextY(){const years=[...new Set(MONTHS.map(m=>m.slice(0,4)))].sort();const i=years.indexOf(curY);if(i<years.length-1){curY=years[i+1];rYear();}}
+
+function rDash(){
+  if(!D) return;
+  if(dashView==='year'){rYear();return;}
   document.getElementById('mlbl').textContent=gl(curM);
   const d=MON[curM]||{card:0,fixed:0,income:0,free:0};
-  const te=d.card+d.fixed,bud=3000;
+  const te=d.card+d.fixed, bud=Object.values(BUD).reduce((s,v)=>s+v,0);
   const rc=te>bud?'#FF4D6D':te>bud*.85?'#FFB800':'#00FF87';
-  drawRing(te,bud,rc);
-  const ra=document.getElementById('ramt');ra.textContent=f0(te);ra.style.color=rc;
-  document.getElementById('rbud').textContent='no €'+bud.toLocaleString();
+  ri=drawRing('rc',te,bud,rc,ri);
+  const ra=document.getElementById('ramt'); ra.textContent=f0(te); ra.style.color=rc;
+  document.getElementById('rbud').textContent='no '+f0(bud);
+  // Pace
   const dim=new Date(parseInt(curM),parseInt(curM.split('-')[1]),0).getDate();
-  const ppd=d.card/dim,proj=ppd*dim;
-  document.getElementById('ptxt').textContent=`€${ppd.toFixed(0)}/dienā · ${dim} dienas · prognoze €${proj.toFixed(0)}`;
+  const ppd=d.card/dim;
+  document.getElementById('ptxt').textContent=`€${ppd.toFixed(0)}/dienā · ${dim} dienas · prognoze €${(ppd*dim).toFixed(0)}`;
   const pbdg=document.getElementById('pbdg');
-  if(proj<bud){pbdg.textContent='ON TRACK';pbdg.className='pbdg pok';}
-  else if(proj<bud*1.2){pbdg.textContent='TUVU';pbdg.className='pbdg pwrn';}
+  if(ppd*dim<1500){pbdg.textContent='ON TRACK';pbdg.className='pbdg pok';}
+  else if(ppd*dim<1800){pbdg.textContent='TUVU';pbdg.className='pbdg pwrn';}
   else{pbdg.textContent='PĀRTĒRIŅŠ';pbdg.className='pbdg povr';}
+  // Rows
   document.getElementById('sinc').textContent='+'+f0(d.income);
   document.getElementById('scard').textContent=f0(d.card);
   document.getElementById('sfix').textContent=f0(d.fixed);
   const fr=d.free||(d.income-d.card-d.fixed);
-  const fe=document.getElementById('sfree');fe.textContent=(fr>=0?'+':'')+f0(fr);fe.style.color=fr>=0?'var(--green)':'var(--red)';
+  const fe=document.getElementById('sfree'); fe.textContent=(fr>=0?'+':'')+f0(fr); fe.style.color=fr>=0?'var(--green)':'var(--red)';
   document.getElementById('sfd').style.background=fr>=0?'var(--green)':'var(--red)';
   const mx=Math.max(d.card,d.fixed,1);
   document.getElementById('scb').style.width=Math.round(d.card/mx*100)+'%';
   document.getElementById('sfb').style.width=Math.round(d.fixed/mx*100)+'%';
+  // Bar chart
   kc('dc');
-  CH['dc']=new Chart(document.getElementById('dc'),{type:'bar',data:{labels:MONTHS.map(g3),datasets:[{label:'Karte',data:MONTHS.map(m=>+(MON[m]?.card||0).toFixed(0)),backgroundColor:'#378ADD',borderRadius:4,stack:'a'},{label:'Fiksētie',data:MONTHS.map(m=>+(MON[m]?.fixed||0).toFixed(0)),backgroundColor:'#1A2A3A',borderRadius:4,stack:'a'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: €${c.parsed.y.toFixed(0)}`}}},scales:{x:{stacked:true,grid:{display:false},ticks:{color:'#6B6B8A',font:{family:'monospace',size:11}}},y:{stacked:true,grid:{color:'#1A1A27'},ticks:{color:'#6B6B8A',callback:v=>'€'+v,font:{size:10}}}}}});
+  CH['dc']=new Chart(document.getElementById('dc'),{
+    type:'bar',
+    data:{labels:MONTHS.map(g3),datasets:[
+      {label:'Karte',data:MONTHS.map(m=>+(MON[m]?.card||0).toFixed(0)),backgroundColor:'#378ADD',borderRadius:4,stack:'a'},
+      {label:'Fiksētie',data:MONTHS.map(m=>+(MON[m]?.fixed||0).toFixed(0)),backgroundColor:'#1A2A3A',borderRadius:4,stack:'a'}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: €${c.parsed.y.toFixed(0)}`}}},
+      scales:{x:{stacked:true,grid:{display:false},ticks:{color:'#6B6B8A',font:{family:'monospace',size:10}}},
+              y:{stacked:true,grid:{color:'#1A1A27'},ticks:{color:'#6B6B8A',callback:v=>'€'+v,font:{size:10}}}}}
+  });
+  // Income
   const incs=(D.incomes||[]).filter(t=>t.month===curM&&t.amt>0);
-  document.getElementById('dinc').innerHTML=incs.length?incs.map(t=>`<div class="irow"><span class="ibdg">${t.type.toUpperCase()}</span><span class="iname">${t.name}</span><span class="iamt">+${f0(t.amt)}</span></div>`).join(''):'<div class="empty">NAV IENĀKUMU</div>';
+  document.getElementById('dinc').innerHTML=incs.length
+    ?incs.map(t=>`<div class="irow"><span class="ibdg">${t.type.toUpperCase()}</span><span class="iname">${t.name}</span><span class="iamt">+${f0(t.amt)}</span></div>`).join('')
+    :'<div class="empty">NAV IENĀKUMU</div>';
 }
 
-function rC(){
-  if(!D)return;
-  tabs('ctabs',cM,m=>{cM=m;rC();},true);
+/* ══ YEAR VIEW ══ */
+function rYear(){
+  if(!D) return;
+  document.getElementById('ylbl').textContent=curY;
+  const yMonths=MONTHS.filter(m=>m.startsWith(curY));
+  const yCard=yMonths.reduce((s,m)=>s+(MON[m]?.card||0),0);
+  const yFixed=yMonths.reduce((s,m)=>s+(MON[m]?.fixed||0),0);
+  const yInc=yMonths.reduce((s,m)=>s+(MON[m]?.income||0),0);
+  const yTotal=yCard+yFixed;
+  const yFree=yInc-yTotal;
+  const yBud=Object.values(BUD).reduce((s,v)=>s+v,0)*12;
+  const rc=yTotal>yBud?'#FF4D6D':yTotal>yBud*.85?'#FFB800':'#00FF87';
+  yri=drawRing('yrc',yTotal,yBud,rc,yri);
+  const yr=document.getElementById('yramt'); yr.textContent=f0(yTotal); yr.style.color=rc;
+  document.getElementById('yrbud').textContent=curY+' kopā';
+  // Stats
+  document.getElementById('ystats').innerHTML=`
+    <div class="ystat"><div class="ysl">IENĀKUMI</div><div class="ysv pos">${f0(yInc)}</div></div>
+    <div class="ystat"><div class="ysl">IZDEVUMI</div><div class="ysv neg">${f0(yTotal)}</div></div>
+    <div class="ystat"><div class="ysl">KARTE</div><div class="ysv">${f0(yCard)}</div></div>
+    <div class="ystat"><div class="ysl">BRĪVAIS</div><div class="ysv ${yFree>=0?'pos':'neg'}">${yFree>=0?'+':''}${f0(yFree)}</div></div>
+  `;
+  // Bar chart by month
+  kc('ybc');
+  CH['ybc']=new Chart(document.getElementById('ybc'),{
+    type:'bar',
+    data:{
+      labels:yMonths.map(g3),
+      datasets:[
+        {label:'Karte',data:yMonths.map(m=>+(MON[m]?.card||0).toFixed(0)),backgroundColor:'#378ADD',borderRadius:4,stack:'a'},
+        {label:'Fiksētie',data:yMonths.map(m=>+(MON[m]?.fixed||0).toFixed(0)),backgroundColor:'#1A2A3A',borderRadius:4,stack:'a'}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{stacked:true,grid:{display:false},ticks:{color:'#6B6B8A',font:{family:'monospace',size:10}}},
+              y:{stacked:true,grid:{color:'#1A1A27'},ticks:{color:'#6B6B8A',callback:v=>'€'+v,font:{size:9}}}}}
+  });
+  // Year categories
+  const allTxs=[...(D.citadele||[]),...(D.swedbank||[])].filter(t=>t.month.startsWith(curY)&&t.cat!=='Bankas komisija');
+  const cats=ct(allTxs,'all');
+  const maxA=cats[0]?cats[0][1]:1;
+  document.getElementById('ycats').innerHTML=cats.slice(0,10).map(([cat,amt])=>`
+    <div class="crow"><div class="cdot" style="background:${clr(cat)}"></div>
+    <div class="cn">${cat}</div>
+    <div class="cbw"><div class="cb" style="width:${Math.round(amt/maxA*100)}%;background:${clr(cat)}"></div></div>
+    <div class="ca">${f0(amt)}</div></div>`).join('');
+  // Year income
+  const yincArr=(D.incomes||[]).filter(t=>t.month.startsWith(curY)&&t.amt>0);
+  document.getElementById('yinc').innerHTML=yincArr.length
+    ?yincArr.map(t=>`<div class="irow"><span class="ibdg">${t.type.toUpperCase()}</span><span class="iname">${t.name}</span><span class="iamt">+${f0(t.amt)}</span></div>`).join('')
+    :'<div class="empty">NAV IENĀKUMU</div>';
+}
+
+/* ══ CARD ══ */
+function rCard(){
+  if(!D) return;
+  tabs('ctabs',cM,m=>{cM=m;rCard();},true);
   const txs=(D.citadele||[]).filter(t=>t.month===cM&&t.cat!=='Bankas komisija');
   const tot=txs.reduce((s,t)=>s+t.amt,0),cnt=txs.length,mx=txs.reduce((m,t)=>Math.max(m,t.amt),0);
-  document.getElementById('cmets').innerHTML=`<div class="met"><div class="ml">KOPĀ</div><div class="mv neg">${f0(tot)}</div><div class="ms">${cnt} darījumi</div></div><div class="met"><div class="ml">VIDĒJI</div><div class="mv">€${cnt?(tot/cnt).toFixed(2):'0'}</div></div><div class="met"><div class="ml">LIELĀKAIS</div><div class="mv">€${mx.toFixed(0)}</div></div><div class="met"><div class="ml">DIENĀ</div><div class="mv">€${(tot/30).toFixed(0)}</div></div>`;
+  document.getElementById('cmets').innerHTML=`
+    <div class="met"><div class="ml">KOPĀ</div><div class="mv neg">${f0(tot)}</div><div class="ms">${cnt} darījumi</div></div>
+    <div class="met"><div class="ml">VIDĒJI</div><div class="mv">€${cnt?(tot/cnt).toFixed(2):'0'}</div></div>
+    <div class="met"><div class="ml">LIELĀKAIS</div><div class="mv">€${mx.toFixed(0)}</div></div>
+    <div class="met"><div class="ml">DIENĀ</div><div class="mv">€${(tot/30).toFixed(0)}</div></div>`;
   const cats=ct(D.citadele||[],cM,['Bankas komisija']),maxA=cats[0]?cats[0][1]:1;
   kc('cpie');
-  if(cats.length){const t8=cats.slice(0,8);CH['cpie']=new Chart(document.getElementById('cpie'),{type:'doughnut',data:{labels:t8.map(c=>c[0]),datasets:[{data:t8.map(c=>+c[1].toFixed(2)),backgroundColor:t8.map(c=>CLR[c[0]]||'#3A3A5A'),borderWidth:2,borderColor:'#0A0A0F'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.label}: €${c.parsed.toFixed(0)}`}}}}});}
-  document.getElementById('ccats').innerHTML=cats.map(([cat,amt])=>`<div class="crow"><div class="cdot" style="background:${CLR[cat]||'#3A3A5A'}"></div><div class="cn">${cat}</div><div class="cbw"><div class="cb" style="width:${Math.round(amt/maxA*100)}%;background:${CLR[cat]||'#3A3A5A'}"></div></div><div class="ca">${f0(amt)}</div></div>`).join('');
+  if(cats.length){
+    const t8=cats.slice(0,8);
+    CH['cpie']=new Chart(document.getElementById('cpie'),{
+      type:'doughnut',
+      data:{labels:t8.map(c=>c[0]),datasets:[{data:t8.map(c=>+c[1].toFixed(2)),backgroundColor:t8.map(c=>clr(c[0])),borderWidth:2,borderColor:'#0A0A0F'}]},
+      options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.label}: €${c.parsed.toFixed(0)}`}}}}
+    });
+  }
+  document.getElementById('ccats').innerHTML=cats.map(([cat,amt])=>`
+    <div class="crow"><div class="cdot" style="background:${clr(cat)}"></div>
+    <div class="cn">${cat}</div>
+    <div class="cbw"><div class="cb" style="width:${Math.round(amt/maxA*100)}%;background:${clr(cat)}"></div></div>
+    <div class="ca">${f0(amt)}</div></div>`).join('');
 }
 
-function rF(){
-  if(!D)return;
-  tabs('ftabs',fM,m=>{fM=m;rF();},true);
+/* ══ FIXED ══ */
+function rFixed(){
+  if(!D) return;
+  tabs('ftabs',fM,m=>{fM=m;rFixed();},true);
   const txs=(D.swedbank||[]).filter(t=>t.month===fM&&!['Bankas komisija','Bankomāts'].includes(t.cat));
   const tot=txs.reduce((s,t)=>s+t.amt,0);
-  document.getElementById('fmets').innerHTML=`<div class="met"><div class="ml">KOPĀ</div><div class="mv neg">${f0(tot)}</div><div class="ms">${txs.length} rēķini</div></div><div class="met"><div class="ml">VIDĒJI/MĒN.</div><div class="mv">${f0(tot)}</div></div>`;
+  document.getElementById('fmets').innerHTML=`
+    <div class="met"><div class="ml">KOPĀ</div><div class="mv neg">${f0(tot)}</div><div class="ms">${txs.length} rēķini</div></div>
+    <div class="met"><div class="ml">VIDĒJI/MĒN.</div><div class="mv">${f0(tot)}</div></div>`;
   const cats=ct((D.swedbank||[]).filter(t=>!['Bankas komisija','Bankomāts'].includes(t.cat)),fM),maxA=cats[0]?cats[0][1]:1;
-  document.getElementById('fcats').innerHTML=cats.map(([cat,amt])=>`<div class="crow"><div class="cdot" style="background:${CLR[cat]||'#3A3A5A'}"></div><div class="cn">${cat}</div><div class="cbw"><div class="cb" style="width:${Math.round(amt/maxA*100)}%;background:${CLR[cat]||'#3A3A5A'}"></div></div><div class="ca">${f0(amt)}</div></div>`).join('');
-  document.getElementById('ftxs').innerHTML=[...txs].sort((a,b)=>b.date.localeCompare(a.date)).map(t=>`<div class="trow"><div class="tdot" style="background:${CLR[t.cat]||'#3A3A5A'}"></div><div class="ti"><div class="tn">${t.name}</div><div class="tc">${t.cat}</div></div><div class="tr"><div class="ta">-${f2(t.amt)}</div><div class="td">${t.date.slice(5)}</div></div></div>`).join('');
+  document.getElementById('fcats').innerHTML=cats.map(([cat,amt])=>`
+    <div class="crow"><div class="cdot" style="background:${clr(cat)}"></div>
+    <div class="cn">${cat}</div>
+    <div class="cbw"><div class="cb" style="width:${Math.round(amt/maxA*100)}%;background:${clr(cat)}"></div></div>
+    <div class="ca">${f0(amt)}</div></div>`).join('');
+  document.getElementById('ftxs').innerHTML=[...txs].sort((a,b)=>b.date.localeCompare(a.date)).map(t=>`
+    <div class="trow"><div class="tdot" style="background:${clr(t.cat)}"></div>
+    <div class="ti"><div class="tn">${t.name}</div><div class="tc">${t.cat}</div></div>
+    <div class="tr"><div class="ta">-${f2(t.amt)}</div><div class="td">${t.date.slice(5)}</div></div></div>`).join('');
 }
 
-function rB(){
-  if(!D)return;
-  tabs('btabs',bM,m=>{bM=m;rB();},true);
+/* ══ BUDGET ══ */
+function rBudget(){
+  if(!D) return;
+  tabs('btabs',bM,m=>{bM=m;rBudget();},true);
   const map={};
-  [...(D.citadele||[]),...(D.swedbank||[])].filter(t=>t.month===bM&&t.cat!=='Bankas komisija').forEach(t=>{map[t.cat]=(map[t.cat]||0)+t.amt;});
-  document.getElementById('blist').innerHTML=Object.entries(BUD).map(([cat,lim])=>{const sp=map[cat]||0,pct=Math.min(100,Math.round(sp/lim*100)),ov=sp>lim,col=ov?'#FF4D6D':pct>80?'#FFB800':'#00FF87';return`<div class="brow"><div class="bhdr"><div class="cdot" style="background:${CLR[cat]||'#3A3A5A'}"></div><div class="bn">${cat}</div><div class="bp" style="color:${col}">${pct}%</div></div><div class="bt"><div class="bf" style="width:${pct}%;background:${col}"></div></div><div class="bnum"><span>${f0(sp)} / ${f0(lim)}</span><span class="${ov?'bo':''}">${ov?'▲ ':''}€${Math.abs(sp-lim).toFixed(0)} ${ov?'pāri':'atlicis'}</span></div></div>`;}).sort((a,b)=>{const pa=parseInt(a.match(/(\d+)%/)[1]),pb=parseInt(b.match(/(\d+)%/)[1]);return pb-pa;}).join('');
+  [...(D.citadele||[]),...(D.swedbank||[])].filter(t=>t.month===bM&&t.cat!=='Bankas komisija')
+    .forEach(t=>{map[t.cat]=(map[t.cat]||0)+t.amt;});
+  const items=Object.entries(BUD).map(([cat,lim])=>{
+    const sp=map[cat]||0,pct=Math.min(100,Math.round(sp/lim*100)),ov=sp>lim;
+    const col=ov?'#FF4D6D':pct>80?'#FFB800':'#00FF87';
+    return{cat,lim,sp,pct,ov,col};
+  }).sort((a,b)=>b.pct-a.pct);
+  document.getElementById('blist').innerHTML=items.map(({cat,lim,sp,pct,ov,col})=>`
+    <div class="brow">
+      <div class="bhdr"><div class="cdot" style="background:${clr(cat)}"></div>
+      <div class="bn">${cat}</div><div class="bp" style="color:${col}">${pct}%</div></div>
+      <div class="bt"><div class="bf" style="width:${pct}%;background:${col}"></div></div>
+      <div class="bnum"><span>${f0(sp)} / ${f0(lim)}</span>
+      <span class="${ov?'bo':''}">${ov?'▲ ':''}€${Math.abs(sp-lim).toFixed(0)} ${ov?'pāri':'atlicis'}</span></div>
+    </div>`).join('');
   const st=SUBS.reduce((s,x)=>s+x.amt,0);
-  document.getElementById('slist').innerHTML=`<div class="brow" style="padding:8px 14px"><div style="display:flex;justify-content:space-between"><div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px">KOPĀ MĒNESĪ</div><div style="font-family:var(--mono);font-size:13px;color:var(--red)">-€${st.toFixed(2)}</div></div></div>${SUBS.map(s=>`<div class="subr"><div class="sico">${s.icon}</div><div class="sinfo"><div class="sn">${s.name}</div><div class="sf">${s.freq.toUpperCase()}</div></div><div class="sa">-€${s.amt.toFixed(2)}</div></div>`).join('')}`;
+  document.getElementById('slist').innerHTML=`
+    <div class="brow" style="padding:8px 14px"><div style="display:flex;justify-content:space-between">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px">KOPĀ MĒNESĪ</div>
+      <div style="font-family:var(--mono);font-size:13px;color:var(--red)">-€${st.toFixed(2)}</div></div></div>
+    ${SUBS.map(s=>`<div class="subr"><div class="sico">${s.icon}</div>
+      <div class="sinfo"><div class="sn">${s.name}</div><div class="sf">${s.freq.toUpperCase()}</div></div>
+      <div class="sa">-€${s.amt.toFixed(2)}</div></div>`).join('')}`;
   const pi=mi(bM)-1;
-  if(pi>=0){const prev=MONTHS[pi],pm={};[...(D.citadele||[]),...(D.swedbank||[])].filter(t=>t.month===prev&&t.cat!=='Bankas komisija').forEach(t=>{pm[t.cat]=(pm[t.cat]||0)+t.amt;});const tc=Object.keys(map).sort((a,b)=>(map[b]||0)-(map[a]||0)).slice(0,8);document.getElementById('cmplist').innerHTML=tc.map(cat=>{const cur=map[cat]||0,pv=pm[cat]||0,diff=cur-pv,pct=pv?Math.round(diff/pv*100):0,badge=diff!==0?`<span class="cmbdg ${diff>0?'cup':'cdn'}">${diff>0?'+':''}${pct}%</span>`:'';return`<div class="cmpr"><div class="cdot" style="background:${CLR[cat]||'#3A3A5A'}"></div><div class="cmn">${cat}</div><div class="cmv">${pv?f0(pv):'-'}</div><div class="cmv cur">${f0(cur)}</div>${badge}</div>`;}).join('');}
-  else document.getElementById('cmplist').innerHTML='<div class="empty">NAV IEPRIEKŠĒJA MĒNEŠA</div>';
+  if(pi>=0){
+    const prev=MONTHS[pi],pm={};
+    [...(D.citadele||[]),...(D.swedbank||[])].filter(t=>t.month===prev&&t.cat!=='Bankas komisija')
+      .forEach(t=>{pm[t.cat]=(pm[t.cat]||0)+t.amt;});
+    const tc=Object.keys(map).sort((a,b)=>(map[b]||0)-(map[a]||0)).slice(0,8);
+    document.getElementById('cmplist').innerHTML=tc.map(cat=>{
+      const cur=map[cat]||0,pv=pm[cat]||0,diff=cur-pv,pct=pv?Math.round(diff/pv*100):0;
+      const badge=diff!==0?`<span class="cmbdg ${diff>0?'cup':'cdn'}">${diff>0?'+':''}${pct}%</span>`:'';
+      return`<div class="cmpr"><div class="cdot" style="background:${clr(cat)}"></div>
+        <div class="cmn">${cat}</div>
+        <div class="cmv">${pv?f0(pv):'-'}</div>
+        <div class="cmv cur">${f0(cur)}</div>${badge}</div>`;
+    }).join('');
+  } else document.getElementById('cmplist').innerHTML='<div class="empty">NAV IEPRIEKŠĒJA MĒNEŠA</div>';
 }
 
-function rT(){
-  if(!D)return;
-  tabs('ttabs',tM,m=>{tM=m;rT();},true);
-  document.getElementById('tfilt').innerHTML=['all','C','S'].map(s=>`<button class="fb${tSrc===s?' on':''}" onclick="setSrc('${s}')">${s==='all'?'OBI':s==='C'?'CITADELE':'SWEDBANK'}</button>`).join('');
+/* ══ TXS ══ */
+function rTxs(){
+  if(!D) return;
+  tabs('ttabs',tM,m=>{tM=m;rTxs();},true);
+  document.getElementById('tfilt').innerHTML=['all','C','S'].map(s=>
+    `<button class="fb${tSrc===s?' on':''}" onclick="setSrc('${s}')">${s==='all'?'OBI':s==='C'?'CITADELE':'SWEDBANK'}</button>`
+  ).join('');
   let all=[...(D.citadele||[]),...(D.swedbank||[])].filter(t=>t.cat!=='Bankas komisija');
-  if(tM!=='all')all=all.filter(t=>t.month===tM);
-  if(tSrc!=='all')all=all.filter(t=>t.s===tSrc);
+  if(tM!=='all') all=all.filter(t=>t.month===tM);
+  if(tSrc!=='all') all=all.filter(t=>t.s===tSrc);
   all.sort((a,b)=>b.date.localeCompare(a.date));
-  document.getElementById('tlist').innerHTML=all.length?all.map(t=>`<div class="trow"><div class="tdot" style="background:${CLR[t.cat]||'#3A3A5A'}"></div><div class="ti"><div class="tn">${t.name}</div><div class="tc">${t.cat} · <span class="${t.s==='C'?'sc2':'ss'}">${t.s==='C'?'CIT':'SWD'}</span></div></div><div class="tr"><div class="ta">-${f2(t.amt)}</div><div class="td">${t.date.slice(5)}</div></div></div>`).join(''):'<div class="empty">NAV DARĪJUMU</div>';
+  document.getElementById('tlist').innerHTML=all.length
+    ?all.map(t=>`<div class="trow">
+      <div class="tdot" style="background:${clr(t.cat)}"></div>
+      <div class="ti"><div class="tn">${t.name}</div>
+      <div class="tc">${t.cat} · <span class="${t.s==='C'?'sc2':'ss'}">${t.s==='C'?'CIT':'SWD'}</span></div></div>
+      <div class="tr"><div class="ta">-${f2(t.amt)}</div><div class="td">${t.date.slice(5)}</div></div>
+      </div>`).join('')
+    :'<div class="empty">NAV DARĪJUMU</div>';
 }
-function setSrc(s){tSrc=s;rT();}
+function setSrc(s){tSrc=s;rTxs();}
 
-if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js').catch(()=>{});}
+/* ══ SETTINGS ══ */
+function rSettings(){
+  renderLimits();
+  renderColorPicker();
+}
+
+function renderLimits(){
+  const el=document.getElementById('lim-list');
+  el.innerHTML=Object.entries(BUD).map(([cat,lim])=>`
+    <div class="lim-row">
+      <div class="lim-dot" style="background:${clr(cat)}"></div>
+      <div class="lim-name">${cat}</div>
+      <input class="lim-inp" type="number" value="${lim}" onchange="updateLimit('${cat}',this.value)">
+      <button class="lim-del" onclick="deleteCategory('${cat}')">×</button>
+    </div>`).join('');
+}
+
+function updateLimit(cat, val){
+  BUD[cat]=parseFloat(val)||0;
+  saveData();
+}
+
+function deleteCategory(cat){
+  if(!confirm(`Dzēst kategoriju "${cat}"?`)) return;
+  delete BUD[cat];
+  delete CLR[cat];
+  saveData();
+  renderLimits();
+}
+
+function renderColorPicker(){
+  const el=document.getElementById('new-cat-clr');
+  el.innerHTML=COLOR_PALETTE.map(c=>`
+    <div class="clr-opt${c===selColor?' sel':''}" style="background:${c}" onclick="selectColor('${c}')"></div>
+  `).join('');
+}
+
+function selectColor(c){
+  selColor=c;
+  renderColorPicker();
+}
+
+function addCategory(){
+  const name=document.getElementById('new-cat-name').value.trim();
+  const lim=parseFloat(document.getElementById('new-cat-lim').value)||100;
+  if(!name){alert('Ievadi kategorijas nosaukumu.');return;}
+  if(BUD[name]!==undefined){alert('Kategorija jau eksistē.');return;}
+  BUD[name]=lim;
+  CLR[name]=selColor;
+  saveData();
+  document.getElementById('new-cat-name').value='';
+  document.getElementById('new-cat-lim').value='';
+  renderLimits();
+  showStatus(`✓ Kategorija "${name}" pievienota`);
+}
+
+/* ══ INIT ══ */
+// Load saved BUD/CLR
+const savedBud=localStorage.getItem('kk_bud');
+const savedClr=localStorage.getItem('kk_clr');
+if(savedBud) BUD={...DEFAULT_BUD,...JSON.parse(savedBud)};
+if(savedClr) CLR={...DEFAULT_CLR,...JSON.parse(savedClr)};
+
 const cached=localStorage.getItem('kk_budget_data');
-if(cached){try{loadData(JSON.parse(cached));}catch(e){localStorage.removeItem('kk_budget_data');}}
+if(cached){
+  try{loadData(JSON.parse(cached));}
+  catch(e){localStorage.removeItem('kk_budget_data');}
+}
 
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('service-worker.js').catch(()=>{});
+}
 </script>
 </body>
 </html>
