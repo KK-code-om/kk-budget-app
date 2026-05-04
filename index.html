@@ -1087,19 +1087,29 @@ function addCategory(){
 }
 
 /* ══ INIT ══ */
-// Load saved BUD/CLR
 const savedBud=localStorage.getItem('kk_bud');
 const savedClr=localStorage.getItem('kk_clr');
-if(savedBud) BUD={...DEFAULT_BUD,...JSON.parse(savedBud)};
-if(savedClr) CLR={...DEFAULT_CLR,...JSON.parse(savedClr)};
+if(savedBud) try{BUD={...DEFAULT_BUD,...JSON.parse(savedBud)};}catch(e){}
+if(savedClr) try{CLR={...DEFAULT_CLR,...JSON.parse(savedClr)};}catch(e){}
 
-const cached=localStorage.getItem('kk_budget_data');
-if(cached){
-  try{loadData(JSON.parse(cached));}
-  catch(e){localStorage.removeItem('kk_budget_data'); go('settings');}
-} else {
-  go('settings');
-}
+window.addEventListener('DOMContentLoaded', function(){
+  const cached=localStorage.getItem('kk_budget_data');
+  if(cached){
+    try{
+      D=JSON.parse(cached);
+      rebuildMonths();
+      document.querySelectorAll('.sc,.nb').forEach(e=>e.classList.remove('on'));
+      document.getElementById('sc-dash').classList.add('on');
+      document.getElementById('nb-dash').classList.add('on');
+      rDash();
+    }catch(e){
+      localStorage.removeItem('kk_budget_data');
+      go('settings');
+    }
+  } else {
+    go('settings');
+  }
+});
 
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('service-worker.js').catch(()=>{});
