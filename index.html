@@ -197,30 +197,8 @@ body{display:flex;flex-direction:column;max-width:430px;margin:0 auto}
 </head>
 <body>
 
-<!-- IMPORT SCREEN -->
-<div id="imp">
-  <div class="i-logo">KK·BUDGET</div>
-  <div class="i-ring">
-    <svg viewBox="0 0 120 120">
-      <circle cx="60" cy="60" r="50" fill="none" stroke="#1A1A27" stroke-width="8"/>
-      <circle cx="60" cy="60" r="50" fill="none" stroke="#00FF87" stroke-width="8"
-        stroke-dasharray="314" stroke-dashoffset="80" stroke-linecap="round" transform="rotate(-90 60 60)"/>
-    </svg>
-    <div class="i-kk">KK</div>
-  </div>
-  <div class="i-title">Laipni lūgts</div>
-  <div class="i-sub">Ielādē sagatavotu JSON datu failu<br>vai importē tieši no bankas izrakstiem.<br>Dati paliek tikai uz tava ierīcē.</div>
-  <input type="file" id="finput" accept=".json">
-  <input type="file" id="finput-xml" accept=".xml">
-  <input type="file" id="finput-csv" accept=".csv">
-  <button class="i-btn" onclick="document.getElementById('finput').click()">↑ IMPORTĒT JSON DATUS</button>
-  <button class="i-btn2" onclick="document.getElementById('finput-xml').click()">+ CITADELE XML</button>
-  <button class="i-btn2" style="margin-top:6px" onclick="document.getElementById('finput-csv').click()">+ SWEDBANK CSV</button>
-  <div class="i-note">DATI NETIEK SŪTĪTI UZ SERVERI<br>VISS NOTIEK LOKĀLI TAVĀ IERĪCĒ</div>
-</div>
-
 <!-- MAIN APP -->
-<div class="app" id="app">
+<div class="app" id="app" style="display:flex">
 <nav class="nav">
   <button class="nb on" onclick="go('dash')" id="nb-dash"><span class="ni">◎</span>DASH</button>
   <button class="nb" onclick="go('card')" id="nb-card"><span class="ni">▤</span>KARTE</button>
@@ -729,8 +707,6 @@ function loadData(json) {
   D = json;
   rebuildMonths();
   localStorage.setItem('kk_budget_data', JSON.stringify(D));
-  document.getElementById('imp').style.display = 'none';
-  document.getElementById('app').style.display = 'flex';
   go('dash');
 }
 
@@ -1117,7 +1093,9 @@ if(savedClr) CLR={...DEFAULT_CLR,...JSON.parse(savedClr)};
 const cached=localStorage.getItem('kk_budget_data');
 if(cached){
   try{loadData(JSON.parse(cached));}
-  catch(e){localStorage.removeItem('kk_budget_data');}
+  catch(e){localStorage.removeItem('kk_budget_data'); go('settings');}
+} else {
+  go('settings');
 }
 
 if('serviceWorker' in navigator){
