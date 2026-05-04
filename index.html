@@ -707,7 +707,10 @@ function loadData(json) {
   D = json;
   rebuildMonths();
   localStorage.setItem('kk_budget_data', JSON.stringify(D));
-  go('dash');
+  document.querySelectorAll('.sc,.nb').forEach(e=>e.classList.remove('on'));
+  document.getElementById('sc-dash').classList.add('on');
+  document.getElementById('nb-dash').classList.add('on');
+  setTimeout(()=>rDash(), 50);
 }
 
 function rebuildMonths() {
